@@ -19,7 +19,7 @@ module.exports = {
         filename: "[name].min.js"
     },
     mode: process.env.NODE_ENV === 'prd'? 'production':  'development',
-    devtool: '#source-map',
+    devtool: process.env.NODE_ENV === 'prd' ? '' : '#source-map',
     module: {
         rules: [
             { test: /\.css$/, loader: "style-loader!css-loader" },

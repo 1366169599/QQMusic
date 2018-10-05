@@ -42,7 +42,8 @@
             <div class="demo" v-for="plate in plates">
                 <div class="img">
                     <div class="collect-img" @click="likeMusic(plate)">
-                        <img :src="plate.collect? '../assets/heart-red.png' : '../assets/heart-grey.png'" alt="">
+                        <img :src="plate.collect? redHeart : greyHeart" alt="">
+                        <!-- <img :src="plate.collect? 'http://7xt129.com1.z0.glb.clouddn.com/heart-red.png' : 'http://7xt129.com1.z0.glb.clouddn.com/heart-grey.png'" alt=""> -->
                     </div>
                     <!-- <div class="collect-img" v-else @click="notLike(plate)">
                         <img src="../assets/heart-red.png" alt="">
@@ -63,6 +64,8 @@ let axios = require("axios");
 export default {
   data() {
     return {
+      redHeart: require('../assets/heart-red.png'),
+      greyHeart: require('../assets/heart-grey.png'),
       plates: [
         {
           url: "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
