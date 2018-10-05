@@ -33,7 +33,7 @@
   }
   .set-container {
       height: 90%;
-      overflow: scroll;
+      overflow: auto;
       background: beige;
     .set {
       margin-top: 50px;

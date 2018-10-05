@@ -18,7 +18,7 @@ module.exports = {
         // publicPath: '/',
         filename: "[name].min.js"
     },
-    mode: 'development',
+    mode: process.env.NODE_ENV === 'prd'? 'production':  'development',
     devtool: '#source-map',
     module: {
         rules: [
