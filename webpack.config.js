@@ -11,7 +11,6 @@ module.exports = {
     entry: {
         'music': "./music.js",
         'EX':'./EX.js'
-
     },
     output: {
         //生产的文件夹为当前目录下的dist文件夹
@@ -37,6 +36,10 @@ module.exports = {
             {
                 test: /\.(png|jpg|jpeg|gif)$/,
                 loader: 'file-loader',
+                query: {
+                    limit:10000,
+                    name: 'assets/[name].[ext]'
+                }
             },
             {
                 test: /\.(svg|woff2?|eot|ttf|otf)(\?.*)?$/,

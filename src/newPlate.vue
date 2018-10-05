@@ -65,31 +65,31 @@ export default {
     return {
       plates: [
         {
-          url: "../assets/musicPlate2.jpg",
+          url: "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
           title: "如何",
           singer: "张韶涵",
           collect: false
         },
         {
-          url: "../assets/musicPlate2.jpg",
+          url: "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
           title: "如何",
           singer: "张韶涵",
           collect: false
         },
         {
-          url: "../assets/musicPlate2.jpg",
+          url: "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
           title: "如何",
           singer: "张韶涵",
           collect: false
         },
         {
-          url: "../assets/musicPlate2.jpg",
+          url: "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
           title: "如何",
           singer: "张韶涵",
           collect: false
         },
         {
-          url: "../assets/musicPlate2.jpg",
+          url: "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
           title: "如何",
           singer: "张韶涵",
           collect: false
