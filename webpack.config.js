@@ -1,4 +1,5 @@
 const path = require('path')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 function resolve(pathname) {
     path.resolve(__dirname, pathname);
 }
@@ -15,7 +16,7 @@ module.exports = {
     output: {
         //生产的文件夹为当前目录下的dist文件夹
         path: path.resolve(__dirname,'dist'),
-        publicPath: '/dist/',
+        // publicPath: '/',
         filename: "[name].min.js"
     },
     mode: 'development',
@@ -50,6 +51,19 @@ module.exports = {
         }
     },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'QQMusic',
+            filename: 'index.html',
+            template: 'template/index.html',
+            chunks: ['music'],
+            inject: true,
+            minify: {
+              removeComments: true,
+              collapseWhitespace: true,
+              removeAttributeQuotes: false
+            },
+            chunksSortMode: 'dependency'
+          })
     ]
 };
