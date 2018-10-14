@@ -27,6 +27,12 @@ const routes = [{
 }, {
     path: '/elemeshop',
     component: () => import('./src/elemeshop.vue')
+},{
+    path: '/singer',
+    component: () => import('./src/category/singer.vue')
+},{
+    path: '/singerMusic',
+    component: () => import('./src/category/singerMusic.vue')
 }]
 const router = new VueRouter({
     routes

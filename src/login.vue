@@ -3,6 +3,8 @@
         <p>
             <span>账号：</span>
             <input type="text" v-model="name">
+            <!-- <input type="text" :value='name' @input='name = $event.target.value'> -->
+            <span>{{name}}</span>
         </p>
         <p>
             <span>密码：</span>
@@ -55,4 +57,3 @@ export default {
   }
 };
 </script>
-
