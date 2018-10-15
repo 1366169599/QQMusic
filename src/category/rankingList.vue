@@ -82,7 +82,7 @@ export default {
     this.category.forEach((item, index) => {
       axios({
         method: "get",
-        url: "http://101.236.45.250:4000/top/list?idx=" + index
+        url: "/api/top/list?idx=" + index
       }).then(res => {
         this.$set(item, "data", res.data);
         // item.data = res.data;
