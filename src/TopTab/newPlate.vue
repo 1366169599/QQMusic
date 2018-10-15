@@ -1,9 +1,13 @@
-<style lang=less>
-.classify{
+<style lang=less scoped>
+.new-plate{
+.classify {
   height: 80px;
   display: flex;
   justify-content: space-between;
-  p{
+  a {
+    text-decoration: none;
+  }
+  p {
     text-align: center;
   }
 }
@@ -36,7 +40,7 @@
     width: 60%;
     margin: 0 10px;
     box-sizing: border-box;
-    .num-album{
+    .num-album {
       margin-top: 10px;
     }
     .new-song {
@@ -44,13 +48,13 @@
       height: 70px;
       background: rgb(240, 239, 239);
       justify-content: space-between;
-      .text{
+      .text {
         padding: 20px 10px;
       }
-      .img{
+      .img {
         width: 70px;
         height: 70px;
-        img{
+        img {
           width: 100%;
           height: 100%;
         }
@@ -92,11 +96,11 @@
       }
     }
   }
-}
+}}
 </style>
 
 <template>
-  <div>
+  <div class="new-plate">
     <div>
       <el-carousel :interval="2000" height="150px" ref='carousel'>
         <el-carousel-item v-for="item in items">
@@ -105,10 +109,10 @@
       </el-carousel>
     </div>
     <div class="classify">
-      <div v-for="category in categorys">
+      <router-link v-for="category in categorys" :to='category.link'>
         <img :src="category.img" alt="">
         <p>{{category.name}}</p>
-      </div>
+      </router-link>
     </div>
     <div class="generalize">
       <div class="m-station">
@@ -163,11 +167,12 @@ import { Carousel, CarouselItem } from "element-ui";
 export default {
   data() {
     return {
-      categorys:[{img:'../../assets/心 .png',name:'歌手'},
-      {img:'../../assets/心 .png',name:'歌手'},
-      {img:'../../assets/心 .png',name:'歌手'},
-      {img:'../../assets/心 .png',name:'歌手'},
-      {img:'../../assets/心 .png',name:'歌手'}
+      categorys: [
+        { img: "../../assets/心 .png", name: "歌手", link: "singer" },
+        { img: "../../assets/心 .png", name: "排行榜", link: "rankingList" },
+        { img: "../../assets/心 .png", name: "分类歌单", link: "catlist" },
+        { img: "../../assets/心 .png", name: "歌手", link: "singer" },
+        { img: "../../assets/心 .png", name: "歌手", link: "singer" }
       ],
       stop: false,
       radioStation: "",

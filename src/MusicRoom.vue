@@ -1,6 +1,8 @@
-<style lang=less>
+<style lang=less scoped>
+.music-room{
 .top-bar {
   background: cyan;
+  width: 100%;
   ul {
     list-style: none;
     display: flex;
@@ -41,7 +43,7 @@
 }
 .menu {
   z-index: 100;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -81,7 +83,7 @@
   }
 }
 .mask {
-  z-index: 1;
+  z-index: 100;
   position: fixed;
   top: 0;
   left: 0;
@@ -89,11 +91,11 @@
   width: 100%;
   background: black;
   opacity: 0.4;
-}
+}}
 </style>
 
 <template>
-  <div>
+  <div class="music-room">
     <div class="top-bar">
       <ul class="top-bar-container">
         <li><img src="../assets/菜单.png" alt="" @click="setting"></li>

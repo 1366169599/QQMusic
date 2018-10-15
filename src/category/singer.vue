@@ -1,4 +1,5 @@
-<style lang="less">
+<style lang="less" scoped>
+.singer{
 .top-bar {
   height: 50px;
   display: flex;
@@ -27,9 +28,10 @@
     }
   }
 }
+}
 </style>
 <template>
-    <div>
+    <div class='singer'>
         <div class="top-bar">
             <div>
                 <-</div>
