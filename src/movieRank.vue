@@ -1,4 +1,4 @@
-<style lang=less>
+<style lang='less' scoped>
 .container{
     display: flex;
     margin: 0 auto;

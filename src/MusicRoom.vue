@@ -157,14 +157,13 @@
 
 <script>
 import newPlate from "./TopTab/newPlate.vue";
-import movieRank from "./movieRank.vue";
+// import movieRank from "./movieRank.vue";
 import myMusic from "./TopTab/myMusic.vue";
 import discover from "./TopTab/discover.vue";
 
 export default {
   components: {
     newPlate,
-    movieRank,
     myMusic,
     discover,
   },

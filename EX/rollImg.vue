@@ -1,4 +1,4 @@
-<style lang=less>
+<style lang='less' scoped>
 .roll-img {
   margin: 50px auto;
   width: 500px;

@@ -6,6 +6,9 @@
   justify-content: space-between;
 }
 .singer-list {
+  a{
+    text-decoration: none;
+  }
   .singer {
     height: 50px;
     display: flex;

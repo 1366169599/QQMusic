@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="less" scoped>
 .ranking-list {
   .title {
     height: 50px;
@@ -11,6 +11,7 @@
   .rang-demo {
       display: flex;
       margin:0 20px 20px 20px;
+      box-sizing: border-box;
       background: white;
       .top-three-song{
           flex-grow: 1;

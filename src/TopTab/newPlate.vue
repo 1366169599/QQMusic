@@ -1,4 +1,4 @@
-<style lang=less scoped>
+<style lang='less' scoped>
 .new-plate{
 .classify {
   height: 80px;
@@ -65,6 +65,7 @@
 .container {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   .demo {
     width: 33%;
     margin: 10px 0;
@@ -158,21 +159,24 @@
         <div>{{plate.singer}}</div>
       </div>
     </div>
+    <personalized></personalized>
   </div>
 </template>
 <script>
 let axios = require("axios");
 import { Carousel, CarouselItem } from "element-ui";
+import personalized from "./personalized.vue";
+
 
 export default {
   data() {
     return {
       categorys: [
-        { img: "../../assets/心 .png", name: "歌手", link: "singer" },
-        { img: "../../assets/心 .png", name: "排行榜", link: "rankingList" },
-        { img: "../../assets/心 .png", name: "分类歌单", link: "catlist" },
-        { img: "../../assets/心 .png", name: "歌手", link: "singer" },
-        { img: "../../assets/心 .png", name: "歌手", link: "singer" }
+        { img: require("../../assets/心 .png"), name: "歌手", link: "singer" },
+        { img: require("../../assets/心 .png"), name: "排行榜", link: "rankingList" },
+        { img: require("../../assets/心 .png"), name: "分类歌单", link: "songList" },
+        { img: require("../../assets/心 .png"), name: "歌手", link: "singer" },
+        { img: require("../../assets/心 .png"), name: "歌手", link: "singer" }
       ],
       stop: false,
       radioStation: "",
@@ -279,7 +283,8 @@ export default {
   },
   components: {
     [Carousel.name]: Carousel,
-    [CarouselItem.name]: CarouselItem
+    [CarouselItem.name]: CarouselItem,
+    personalized,
   }
 };
 </script>

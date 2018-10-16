@@ -37,8 +37,11 @@ const routes = [{
     path: '/rankingList',
     component: () => import('./src/category/rankingList.vue')
 },{
-    path: 'catlist',
+    path: '/catlist',
     component: () => import('./src/category/catlist.vue')
+},{
+    path: '/songList',
+    component: () => import('./src/category/songList.vue')
 }]
 const router = new VueRouter({
     routes
