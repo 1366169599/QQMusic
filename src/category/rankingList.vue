@@ -72,7 +72,9 @@
     </div>
 </template>
 <script>
-let axios = require("axios");
+// let axios = require("axios");
+// import axios from '../util/Axios'
+
 export default {
   data() {
     return {
@@ -81,9 +83,10 @@ export default {
   },
   created() {
     this.category.forEach((item, index) => {
-      axios({
+        // instance.get("/api/top/list?idx=" + index);
+      this.$axios({
         method: "get",
-        url: "http://101.236.45.250:4000/top/list?idx=" + index
+        url: "/top/list?idx=" + index
       }).then(res => {
         this.$set(item, "data", res.data);
         // item.data = res.data;

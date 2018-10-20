@@ -1,16 +1,11 @@
-console.log(3456);
 import App from './src/app.vue'
 import Vue from 'vue'
-// import login from './src/login.vue'
-// import regist from './src/signIn.vue'
-// import musicRoom from './src/MusicRoom.vue'
 import VueRouter from 'vue-router'
-// import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-// import eleme from './src/eleme.vue'
-// import elemeshop from './src/elemeshop.vue'
-// Vue.use(ElementUI);/
+import CommonPlugin from './src/util/common-plugin';
+
 Vue.use(VueRouter)
+Vue.use(CommonPlugin)
 
 const routes = [{
     path: '/login',
