@@ -42,6 +42,18 @@ const routes = [{
 },{
     path: '/songList',
     component: () => import('./src/category/songList.vue')
+},{
+    path: '/djRadios',
+    component: () => import('./src/category/djRadios.vue')
+},{
+    path: '/albumCont',
+    component: () => import('./src/singerMusic/albumCont.vue')
+},{
+    path: '/search',
+    component: () => import('./src/musicRoom/search.vue')
+},{
+    path: '/songListCont',
+    component: () => import('./src/category/songListCont.vue')
 }]
 const router = new VueRouter({
     routes

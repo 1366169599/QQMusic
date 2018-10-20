@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="less" scoped>
 .roll-img {
   width: 100%;
   height: 100%;

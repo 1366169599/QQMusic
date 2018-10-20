@@ -1,5 +1,9 @@
 <style lang=less>
 .songList {
+  a{
+    text-decoration: none;
+    color: black;
+  }
   .arrow {
     width: 10px;
     height: 10px;
@@ -100,13 +104,14 @@
         </div>
         <div>
             <div class="all-song-list" v-if='songs.length'>
-                <div class="song-item" v-for='song in songs' >
+                <router-link class="song-item" v-for='song in songs' 
+                :to="'songListCont?id='+song.id"> 
                     <div class='img-cont'>
                         <img :src="song.coverImgUrl" alt="">
                         <div class="singer-name">{{song.creator.nickname}}</div>
                     </div>
                     <p class='name'>{{song.name}}</p>
-                </div>
+                </router-link>
             </div>
             <div class='empty' v-else>没有查到相关歌曲信息，抱歉</div> 
         </div>
@@ -139,9 +144,6 @@ export default {
     arr.forEach((item)=>{
        obj[item.split('=')[0]] =item.split('=')[1] 
     })
-    console.log(obj)
-    console.log(hash);
-
       this.songList= decodeURIComponent(obj.cat);
       if(this.songList === 'undefined') {
           this.songList = '全部歌曲';

@@ -1,11 +1,29 @@
 <style lang='less' scoped>
 .new-plate{
+  .roll-img{
+    width: 100%;
+    height: 100%;
+  }
 .classify {
   height: 80px;
   display: flex;
-  justify-content: space-between;
+  margin-top: 10px;
+  justify-content: space-around;
   a {
     text-decoration: none;
+    color: black;
+    display: inline-block;
+    .img-cont{
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+          width: 70%;
+          height: 70%;
+        }
+    }
   }
   p {
     text-align: center;
@@ -111,7 +129,9 @@
     </div>
     <div class="classify">
       <router-link v-for="category in categorys" :to='category.link'>
+        <div class="img-cont">
         <img :src="category.img" alt="">
+        </div>
         <p>{{category.name}}</p>
       </router-link>
     </div>
@@ -160,23 +180,25 @@
       </div>
     </div>
     <personalized></personalized>
+    <recommendDj></recommendDj>
   </div>
 </template>
 <script>
 let axios = require("axios");
 import { Carousel, CarouselItem } from "element-ui";
 import personalized from "./personalized.vue";
+import recommendDj from "./recommendDj.vue";
 
 
 export default {
   data() {
     return {
       categorys: [
-        { img: require("../../assets/心 .png"), name: "歌手", link: "singer" },
-        { img: require("../../assets/心 .png"), name: "排行榜", link: "rankingList" },
-        { img: require("../../assets/心 .png"), name: "分类歌单", link: "songList" },
-        { img: require("../../assets/心 .png"), name: "歌手", link: "singer" },
-        { img: require("../../assets/心 .png"), name: "歌手", link: "singer" }
+        { img: require("../../assets/singer.png"), name: "歌手", link: "singer" },
+        { img: require("../../assets/ranking.png"), name: "排行榜", link: "rankingList" },
+        { img: require("../../assets/cat.png"), name: "分类歌单", link: "songList" },
+        { img: require("../../assets/radio.png"), name: "电台", link: "djRadios" },
+        { img: require("../../assets/video.png"), name: "歌手", link: "singer" }
       ],
       stop: false,
       radioStation: "",
@@ -242,9 +264,7 @@ export default {
       method: "get",
       url: "http://101.236.45.250:4000/music/url?id=397011"
     }).then(res => {
-      console.log(res);
       this.radioStation = res.data.data[0].url;
-      console.log(this.radioStation);
     });
     if (!sessionStorage.getItem("key")) {
       axios({
@@ -285,6 +305,7 @@ export default {
     [Carousel.name]: Carousel,
     [CarouselItem.name]: CarouselItem,
     personalized,
+    recommendDj,
   }
 };
 </script>

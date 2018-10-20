@@ -1,44 +1,42 @@
-<style lang=less scoped>
+<style lang="less" scoped>
 .music-room{
 .top-bar {
   background: cyan;
-  width: 100%;
-  ul {
-    list-style: none;
-    display: flex;
-  }
-  .top-bar-container {
-    justify-content: space-between;
-    align-items: center;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+    .img-cont{
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img{
+        width: 50%;
+        height: 50%;
+      }
+    }
     .tab {
-      font-size: 20px;
+      display: flex;
+      font-size: 25px;
+      line-height: 80px;
+      p{
+        padding: 0 5px;
+      }
       .show{
         color: aliceblue;
       }
-      li {
-        padding: 5px;
-      }
     }
-    .add {
-      font-size: 35px;
-    }
-    li {
-      img {
-        width: 28px;
-        height: 28px;
-        vertical-align: middle;
-      }
-    }
-  }
 }
 .search {
   input {
     display: block;
     width: 100%;
-    height: 30px;
+    height: 50px;
     text-align: center;
     background: aquamarine;
     border: none;
+    outline: none;
   }
 }
 .menu {
@@ -97,22 +95,23 @@
 <template>
   <div class="music-room">
     <div class="top-bar">
-      <ul class="top-bar-container">
-        <li><img src="../assets/菜单.png" alt="" @click="setting"></li>
-        <li>
-          <ul class="tab">
-            <li @click="tabChange(0)" :class="{'show':tabShow==0}">我的</li>
-            <li @click="tabChange(1)" :class="{'show':tabShow==1}">音乐馆</li>
-            <li @click="tabChange(2)" :class="{'show':tabShow==2}">发现</li>
-          </ul>
-        </li>
-      <li class="add">+</li>
-      </ul>
+
+        <div class="img-cont"><img src="../assets/菜单.png" alt="" @click="setting"></div>
+        
+          <div class="tab">
+            <p @click="tabChange(0)" :class="{'show':tabShow==0}">我的</p>
+            <p @click="tabChange(1)" :class="{'show':tabShow==1}">音乐馆</p>
+            <p @click="tabChange(2)" :class="{'show':tabShow==2}">发现</p>
+          </div>
+        
+      <div class="img-cont"><img src="../assets/add.png" alt=""></div>
 
     </div>
-    <div class="search">
+
+    <router-link class="search" to='search'>
       <input type="text" placeholder="搜索">
-    </div>
+    </router-link>
+
     <div class="mask" v-if="show" @click="hide"></div>
     <div class="menu" :class='{"out":!show,"in": show}'>
       <div class="set-container">

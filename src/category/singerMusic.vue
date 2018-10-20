@@ -48,20 +48,6 @@
             }
         }
     }
-    .singer-musiclist{
-        .song-demo{
-            height: 50px;
-            border-bottom: 1px solid #d1d1d1;
-            padding-left: 20px;
-            .song-name{
-                padding: 3px 0;
-            }
-            .album-name{
-                font-size: 12px;
-                color:gray;
-            }
-        }
-    }
 </style>
 <template>
     <div>
@@ -77,74 +63,35 @@
         </div>
         <div class="singer-music">
            <p>
-               <span>歌曲{{musicSize}}</span>
-               <span>专辑{{albumSize}}</span>
-               <span>MV{{mvSize}}</span>
-               <span>详情</span>
+               <span @click="tabShow(1)" >歌曲{{musicSize}}</span>
+               <span @click="tabShow(2)" >专辑{{albumSize}}</span>
+               <span @click="tabShow(3)" >MV{{mvSize}}</span>
+               <span @click="tabShow(4)" >详情</span>
            </p>
         </div>
-        <div class="singer-musiclist">
-            <div class="single" v-for="song in hotSongs">
-                <div class="song-demo" @click="playMusic(song)">
-                    <p class="song-name">{{song.name}}</p>
-                    <p class="album-name">{{name}}-{{song.al.name}}</p>
-                </div>
-            </div>
-        </div>
-        <audio src="" id='myAudio' type="audio/mpeg"></audio>
+        <musicSize v-if="show==1"></musicSize>
+        <albumSize :singerId='singerId' v-else-if="show==2"></albumSize>
+        <mvSize :singerId='singerId' v-else-if="show==3"></mvSize>
+        <singerIntroduce :singerId='singerId' v-else></singerIntroduce>
     </div>
 </template>
 <script>
 let axios = require("axios");
+import musicSize from '../singerMusic/musicSize.vue';
+import albumSize from '../singerMusic/albumSize.vue';
+import mvSize from '../singerMusic/mvSize.vue';
+import singerIntroduce from '../singerMusic/singerIntroduce.vue'; 
 export default {
   data() {
     return {
-      hotSongs: [],
-      currentSong: "",
-      playState: false,
-      audioElement: null,
       name: "",
       backgrond:'',
       musicSize:'',
       albumSize:'',
-      mvSize:''
+      mvSize:'',
+      singerId:'',
+      show:1,
     };
-  },
-  methods: {
-    playMusic(song) {
-      this.playState = !this.playState;
-      // this.currentSong = song.mp3Url;
-      this.audioElement.load();
-      axios({
-        method: "get",
-        url: "http://101.236.45.250:4000/music/url?id=" + song.id
-      }).then(res => {
-        //     console.log(res);
-        this.audioElement.src = res.data.data[0].url;
-        if (this.playState) {
-          this.audioElement.play();
-        } else {
-          this.audioElement.pause();
-        }
-        //     // console.log(this.currentSong);
-        //     //下一个队列的时候才执行，此时dom已经生成了
-        //     // this.$nextTick(() => {
-        //         setTimeout(()=>{
-        //         this.$refs.currentSong.play();
-
-        //         },10)
-
-        //       if (this.playState) {
-        //         // this.$refs.currentSong.play();
-
-        //     //     this.$refs.currentSong.load();
-        //     //     this.$refs.currentSong.play();
-        //     //   } else {
-        //     //     this.$refs.currentSong.pause();
-        //       }
-        // });
-      });
-    }
   },
   created() {
     let queryParam = location.hash.split("?")[1];
@@ -152,13 +99,11 @@ export default {
     queryParam.split("&").forEach(param => {
       obj[param.split("=")[0]] = param.split("=")[1];
     });
-    console.log(obj.id);
+    this.singerId=obj.id;
     axios({
       method: "get",
       url: "http://101.236.45.250:4000/artists?id=" + obj.id
     }).then(res => {
-      console.log(res.data);
-      this.hotSongs = res.data.hotSongs;
       this.name = res.data.artist.name;
       this.backgrond=res.data.artist.picUrl;
       this.musicSize=res.data.artist.musicSize;
@@ -166,8 +111,16 @@ export default {
       this.mvSize=res.data.artist.mvSize;
     });
   },
-  mounted() {
-    this.audioElement = document.getElementById("myAudio");
+  methods:{
+      tabShow(show){
+          this.show=show;
+      }
+  },
+  components:{
+      musicSize,
+      albumSize,
+      mvSize,
+      singerIntroduce
   }
 };
 </script>
