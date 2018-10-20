@@ -85,7 +85,7 @@
   </div>
 </template>
 <script>
-let axios = require("axios");
+
 import singerCategory from "./singerCategory.vue";
 export default {
   data() {
@@ -110,11 +110,11 @@ export default {
   },
   methods: {
      request(id) {
-      let url = "http://101.236.45.250:4000/artist/list";
+      let url = "/artist/list";
       if (id) {
-        url = "http://101.236.45.250:4000/artist/list?cat=" + id;
+        url = "/artist/list?cat=" + id;
       }
-      axios({
+      this.$axios({
         method: "get",
         url: url
       }).then(res => {

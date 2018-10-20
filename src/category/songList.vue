@@ -118,7 +118,7 @@
     </div>
 </template>
 <script>
-let axios = require("axios");
+
 export default {
   data() {
     return {
@@ -130,9 +130,9 @@ export default {
     };
   },
   created() {
-    axios({
+    this.$axios({
       method: "get",
-      url: "http://101.236.45.250:4000/top/playlist/highquality?limit=30"
+      url: "/top/playlist/highquality?limit=30"
     }).then(res => {
       this.coverImgUrl = res.data.playlists[0].coverImgUrl;
       this.qualityname = res.data.playlists[0].name;
@@ -150,10 +150,10 @@ export default {
           obj.cat ='华语';
       }
 
-    axios({
+    this.$axios({
       method: "get",
       url:
-        "http://101.236.45.250:4000/top/playlist/highquality?limit=30&cat=" +obj.cat
+        "/top/playlist/highquality?limit=30&cat=" +obj.cat
     }).then(res => {
       this.songs = res.data.playlists;
     });

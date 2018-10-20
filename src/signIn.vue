@@ -12,7 +12,7 @@
     </div>
 </template>
 <script>
-let axios = require("axios");
+
 
 export default {
   data() {
@@ -27,7 +27,7 @@ export default {
         alert("账号和密码不能为空");
         return;
       }
-      axios({
+      this.$axios({
         method: "get",
         url: "http://192.168.1.103:3000/ajax/regist?name=" + this.name + "&password=" + this.password
       }).then(res => {

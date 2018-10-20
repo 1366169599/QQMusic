@@ -76,7 +76,7 @@
     </div>
 </template>
 <script>
-let axios = require("axios");
+
 import musicSize from '../singerMusic/musicSize.vue';
 import albumSize from '../singerMusic/albumSize.vue';
 import mvSize from '../singerMusic/mvSize.vue';
@@ -100,9 +100,9 @@ export default {
       obj[param.split("=")[0]] = param.split("=")[1];
     });
     this.singerId=obj.id;
-    axios({
+    this.$axios({
       method: "get",
-      url: "http://101.236.45.250:4000/artists?id=" + obj.id
+      url: "/artists?id=" + obj.id
     }).then(res => {
       this.name = res.data.artist.name;
       this.backgrond=res.data.artist.picUrl;

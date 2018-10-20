@@ -47,14 +47,6 @@ module.exports = {
             }
         ]
     },
-    devServer: {
-        proxy: {
-          '/api': {
-            target:'http://101.236.45.250:4000',
-            pathRewrite: {'^/api' : ''}
-          }
-        }
-    },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {

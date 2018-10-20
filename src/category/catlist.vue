@@ -81,7 +81,7 @@
     </div>
 </template>
 <script>
-let axios = require("axios");
+
 export default {
   data() {
     return {
@@ -94,9 +94,9 @@ export default {
       }
     },
   created() {
-    axios({
+    this.$axios({
       method: "get",
-      url: "http://101.236.45.250:4000/playlist/catlist"
+      url: "/playlist/catlist"
     }).then(res => {
       console.log(res.data);
       this.catlist = res.data.sub;

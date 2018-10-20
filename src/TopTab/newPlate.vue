@@ -184,7 +184,7 @@
   </div>
 </template>
 <script>
-let axios = require("axios");
+
 import { Carousel, CarouselItem } from "element-ui";
 import personalized from "./personalized.vue";
 import recommendDj from "./recommendDj.vue";
@@ -260,14 +260,14 @@ export default {
   created() {
     // this.value='new platesajdfljasldfjsaldfjlsad'
     // this.$emit('input',this.value);
-    axios({
+    this.$axios({
       method: "get",
-      url: "http://101.236.45.250:4000/music/url?id=397011"
+      url: "/music/url?id=397011"
     }).then(res => {
       this.radioStation = res.data.data[0].url;
     });
     if (!sessionStorage.getItem("key")) {
-      axios({
+      this.$axios({
         method: "get",
         url: "http://101.236.45.250:3000/ajax/musiclist"
       }).then(res => {
@@ -280,7 +280,7 @@ export default {
   },
   methods: {
     likeMusic(plate) {
-      axios({
+      this.$axios({
         method: "get",
         url: "http://101.236.45.250:3000/ajax/collect?id=" + plate._id
       }).then(res => {

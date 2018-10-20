@@ -48,7 +48,7 @@
     </div>
 </template>
 <script>
-let axios = require("axios");
+
 export default {
   props: ["singerId"],
   data() {
@@ -58,9 +58,9 @@ export default {
   },
   created() {
     let hash = location.hash;
-    axios({
+    this.$axios({
       method: "get",
-      url: "http://101.236.45.250:4000/artist/mv?id=" + this.singerId
+      url: "/artist/mv?id=" + this.singerId
     }).then(res => {
       this.mvSize = res.data.mvs;
     });

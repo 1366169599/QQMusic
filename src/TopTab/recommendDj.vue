@@ -1,12 +1,12 @@
 <style lang="less" scoped>
-.personalized{
+.recommendDj{
     .title{
         height: 50px;
     }
-    .songlists{
+    .djRadios{
         display: flex;
         flex-wrap: wrap;
-        .songlist-item{
+        .djRadio-item{
             width: 33%;
             margin: 10px 0;
             .name{
@@ -24,16 +24,16 @@
 </style>
 
 <template>
-    <div class="personalized">
+    <div class="recommendDj">
         <div class="title">
-            <h2>推荐歌单</h2>
+            <h2>推荐电台</h2>
         </div>
-        <div class="songlists">
-        <div class="songlist-item" v-for='songlist in songlists.slice(0,6)'>
+        <div class="djRadios">
+        <div class="djRadio-item" v-for='djRadio in djRadios.slice(0,6)'>
             <div class='img-cont'>
-                <img :src="songlist.picUrl" alt="">
+                <img :src="djRadio.picUrl" alt="">
             </div>
-            <p class='name'>{{songlist.name}}</p>
+            <p class='name'>{{djRadio.rcmdtext}}</p>
         </div>
         </div>
     </div>
@@ -43,16 +43,15 @@
 export default {
     data(){
         return{
-            songlists:[]
+            djRadios:[]
         }
     },
     created(){
         this.$axios({
             methed:'get',
-            url:'/personalized'
+            url:'/dj/recommend'
         }).then(res=>{
-            console.log(res.data)
-            this.songlists=res.data.result
+            this.djRadios=res.data.djRadios
         })
     }
 }

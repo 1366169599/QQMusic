@@ -43,7 +43,7 @@
     </div>
 </template>
 <script>
-let axios = require("axios");
+
 export default {
   data() {
     return {
@@ -59,7 +59,7 @@ export default {
     };
   },
   created(){
-      axios({
+      this.$axios({
           method:'get',
           url:'http://192.168.1.103:3000/ajax/movielist'
       }).then(res=>{

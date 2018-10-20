@@ -22,7 +22,7 @@
      </div>
 </template>
 <script>
-let axios=require('axios')
+
 export default {
     data(){
         return{
