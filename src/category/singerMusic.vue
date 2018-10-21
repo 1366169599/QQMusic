@@ -1,4 +1,19 @@
 <style lang="less" scoped>
+     .arrows{
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      img{
+          width: 70%;
+          height: 70%;
+      }
+  }
     .singer-information{
         height: 300px;
         position: relative;
@@ -51,6 +66,9 @@
 </style>
 <template>
     <div>
+         <div class="arrows" @click="goBack">
+                <img src="../../assets/arrowsWhite.png" alt="">
+            </div>
         <div class="singer-information">
             <img :src="backgrond" alt="">
             <div class="artist">
@@ -113,6 +131,7 @@ export default {
   },
   methods:{
       tabShow(show){
+          console.log(123)
           this.show=show;
       }
   },

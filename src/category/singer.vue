@@ -124,9 +124,10 @@ export default {
     searchMusic(cate) {
       this.request(cate.id);
     },
-    goBack(){
-      history.back()
-    }
+    // goBack(){
+    //   history.back()
+    // }
+    
    
   },
   created() {

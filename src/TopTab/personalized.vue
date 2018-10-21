@@ -1,5 +1,9 @@
 <style lang="less" scoped>
 .personalized{
+    a{
+        text-decoration: none;
+        color: black;
+    }
     .title{
         height: 50px;
     }
@@ -29,12 +33,13 @@
             <h2>推荐歌单</h2>
         </div>
         <div class="songlists">
-        <div class="songlist-item" v-for='songlist in songlists.slice(0,6)'>
+        <router-link class="songlist-item" v-for='songlist in songlists.slice(0,6)'
+        :to='"songListCont?id="+songlist.id'>
             <div class='img-cont'>
                 <img :src="songlist.picUrl" alt="">
             </div>
             <p class='name'>{{songlist.name}}</p>
-        </div>
+        </router-link>
         </div>
     </div>
 </template>

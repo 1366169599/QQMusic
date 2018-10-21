@@ -18,6 +18,7 @@
   }
   .search {
     flex-grow: 1;
+    height: 60px;
     input {
       display: inline-block;
       width: 100%;

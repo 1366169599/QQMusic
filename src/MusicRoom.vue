@@ -5,12 +5,22 @@
   height: 80px;
   display: flex;
   justify-content: space-between;
-    .img-cont{
+    .img-cont-lift{
       width: 80px;
       height: 80px;
       display: flex;
-      justify-content: center;
       align-items: center;
+      img{
+        width: 50%;
+        height: 50%;
+      }
+    }
+     .img-cont-right{
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      flex-direction:row-reverse;
       img{
         width: 50%;
         height: 50%;
@@ -18,7 +28,7 @@
     }
     .tab {
       display: flex;
-      font-size: 25px;
+      font-size: 23px;
       line-height: 80px;
       p{
         padding: 0 5px;
@@ -96,7 +106,7 @@
   <div class="music-room">
     <div class="top-bar">
 
-        <div class="img-cont"><img src="../assets/菜单.png" alt="" @click="setting"></div>
+        <div class="img-cont-lift"><img src="../assets/菜单.png" alt="" @click="setting"></div>
         
           <div class="tab">
             <p @click="tabChange(0)" :class="{'show':tabShow==0}">我的</p>
@@ -104,7 +114,7 @@
             <p @click="tabChange(2)" :class="{'show':tabShow==2}">发现</p>
           </div>
         
-      <div class="img-cont"><img src="../assets/add.png" alt=""></div>
+      <div class="img-cont-right"><img src="../assets/add.png" alt=""></div>
 
     </div>
 
@@ -170,9 +180,10 @@ export default {
     return {
       show: false,
       tabShow:1,
-      plate:'plate'
+      plate:'plate',
     };
   },
+
   methods: {
     setting() {
       this.show = true;

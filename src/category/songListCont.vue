@@ -3,6 +3,20 @@
   height: 240px;
   background: rgb(82, 82, 235);
   color: white;
+  .arrows{
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img{
+          width: 70%;
+          height: 70%;
+      }
+  }
   .title {
     line-height: 60px;
     text-align: center;
@@ -79,6 +93,9 @@
 <template>
     <div>
         <div class="album-cont">
+            <div class="arrows" @click="goBack">
+                <img src="../../assets/arrowsWhite.png" alt="">
+            </div>
             <h2 class="title">歌单</h2>
             <div class="album">
                 <div class="img-cont">
@@ -95,7 +112,7 @@
             </div>
         </div>
         <div class="songs">
-            <div class="songs-item" v-for="(song,index) in songs">
+            <div class="songs-item" v-for="(song,index) in songs" @click="playMusic(song.id)">
                 <div class="num">{{index+1}}</div>
                 <div class="text">
                     <p class="name">{{song.name}}</p>

@@ -18,13 +18,12 @@
     <div>
         <div class="singer-musiclist">
             <div v-for="song in hotSongs">
-                <div class="song-demo" @click="playMusic(song)">
+                <div class="song-demo" @click="playMusic(song.id)">
                     <p class="song-name">{{song.name}}</p>
                     <p class="album-name">{{name}}-{{song.al.name}}</p>
                 </div>
             </div>
         </div>
-        <audio src="" id='myAudio' type="audio/mpeg"></audio>
     </div>
 </template>
 <script>
@@ -40,40 +39,23 @@ export default {
     };
   },
   methods: {
-    playMusic(song) {
-      this.playState = !this.playState;
-      // this.currentSong = song.mp3Url;
-      this.audioElement.load();
-      this.$axios({
-        method: "get",
-        url: "/music/url?id=" + song.id
-      }).then(res => {
-        //     console.log(res);
-        this.audioElement.src = res.data.data[0].url;
-        if (this.playState) {
-          this.audioElement.play();
-        } else {
-          this.audioElement.pause();
-        }
-        //     // console.log(this.currentSong);
-        //     //下一个队列的时候才执行，此时dom已经生成了
-        //     // this.$nextTick(() => {
-        //         setTimeout(()=>{
-        //         this.$refs.currentSong.play();
-
-        //         },10)
-
-        //       if (this.playState) {
-        //         // this.$refs.currentSong.play();
-
-        //     //     this.$refs.currentSong.load();
-        //     //     this.$refs.currentSong.play();
-        //     //   } else {
-        //     //     this.$refs.currentSong.pause();
-        //       }
-        // });
-      });
-    }
+    // playMusic(song) {
+    //   this.playState = !this.playState;
+    //   // this.currentSong = song.mp3Url;
+    //   this.audioElement.load();
+    //   this.$axios({
+    //     method: "get",
+    //     url: "/music/url?id=" + song.id
+    //   }).then(res => {
+    //     //     console.log(res);
+    //     this.audioElement.src = res.data.data[0].url;
+    //     if (this.playState) {
+    //       this.audioElement.play();
+    //     } else {
+    //       this.audioElement.pause();
+    //     }
+    //   });
+    // }
   },
   created() {
     let queryParam = location.hash.split("?")[1];
@@ -91,8 +73,6 @@ export default {
       this.name = res.data.artist.name;      
     });
   },
-  mounted() {
-    this.audioElement = document.getElementById("myAudio");
-  }
+ 
 };
 </script>

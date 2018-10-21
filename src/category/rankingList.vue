@@ -1,8 +1,22 @@
 <style lang="less" scoped>
 .ranking-list {
+  .arrows{
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img{
+          width: 70%;
+          height: 70%;
+      }
+  }
   .title {
-    height: 50px;
-    line-height: 50px;
+    height: 60px;
+    line-height: 60px;
     text-align: center;
     background: #d1d1d1;
   }
@@ -52,6 +66,9 @@
 
 <template>
     <div class="ranking-list">
+       <div class="arrows" @click="goBack">
+                <img src="../../assets/arrows.png" alt="">
+            </div>
         <div class="title">
             <h2>音乐巅峰榜</h2>
         </div>
@@ -86,14 +103,8 @@ export default {
         url: "/top/list?idx=" + index
       }).then(res => {
         this.$set(item, "data", res.data);
-        // item.data = res.data;
-        console.log(res.data);
       });
     });
-
-    setTimeout(() => {
-      console.log(this.category);
-    }, 4000);
   }
 };
 </script>

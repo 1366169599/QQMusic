@@ -2,6 +2,7 @@
 <template>
     <div>
      <router-view></router-view>
+        <audio id='myAudio' type="audio/mpeg"></audio>
      <!-- <div>
          <div class="img cont">
              <img src="" alt="">
@@ -22,13 +23,15 @@
      </div>
 </template>
 <script>
-
 export default {
     data(){
         return{
 
         }
     },
+     mounted() {
+         this.$store.commit('setAudioElement', document.getElementById("myAudio"))
+  }
 }
 </script>
 

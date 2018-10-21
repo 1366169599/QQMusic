@@ -3,9 +3,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import 'element-ui/lib/theme-chalk/index.css';
 import CommonPlugin from './src/util/common-plugin';
+import store from './store.js';
+import mixin from './mixin.js';
 
 Vue.use(VueRouter)
 Vue.use(CommonPlugin)
+Vue.mixin(mixin)
 
 const routes = [{
     path: '/login',
@@ -55,6 +58,7 @@ const router = new VueRouter({
 })
 new Vue({
     router,
+    store,
     el: '#app',
     render: h => h(App)
 
