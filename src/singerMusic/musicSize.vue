@@ -18,7 +18,7 @@
     <div>
         <div class="singer-musiclist">
             <div v-for="song in hotSongs">
-                <div class="song-demo" @click="playMusic(song.id)">
+                <div class="song-demo" @click="playMusic(song)">
                     <p class="song-name">{{song.name}}</p>
                     <p class="album-name">{{name}}-{{song.al.name}}</p>
                 </div>

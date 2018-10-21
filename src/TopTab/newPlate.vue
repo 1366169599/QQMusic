@@ -166,11 +166,7 @@
         <div class="img">
           <div class="collect-img" @click="likeMusic(plate)">
             <img :src="plate.collect? redHeart : greyHeart" alt="">
-            <!-- <img :src="plate.collect? 'http://7xt129.com1.z0.glb.clouddn.com/heart-red.png' : 'http://7xt129.com1.z0.glb.clouddn.com/heart-grey.png'" alt=""> -->
           </div>
-          <!-- <div class="collect-img" v-else @click="notLike(plate)">
-                        <img src="../assets/heart-red.png" alt="">
-                    </div> -->
           <a :href="plate.content">
             <img :src="plate.url" alt="">
           </a>
