@@ -11,7 +11,9 @@ export default new Vuex.Store({
         showPlayBar:false,
         singerName:'',
         songName:'',
-        songPicture:''
+        songPicture:'',
+        song:{},
+        songs:[]
     },
     mutations: {
         setAudioElement(state, audioElement) {
@@ -32,8 +34,14 @@ export default new Vuex.Store({
         setSongPicture(state,songPicture) {
             state.songPicture = songPicture;
         },
-        setShowPlayBar(state) {
-            state.showPlayBar = true;
+        setShowPlayBar(state,boolearn) {
+            state.showPlayBar = boolearn;
+        },
+        setSong(state,song) {
+            state.song = song;
+        },
+        setSongs(state,songs) {
+            state.songs = songs;
         },
     },
     actions: {

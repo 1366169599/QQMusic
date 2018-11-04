@@ -72,16 +72,22 @@
     <div>
         <router-view></router-view>
         <audio id='myAudio' type="audio/mpeg"></audio>
-        <div class="play-bar" v-if="$store.state.showPlayBar">
-            <div class="singer-img">
-                <div class="img-border">
-                    <img :src="$store.state.songPicture" alt="">
+        <div class="play-bar" v-show="$store.state.showPlayBar">
+            
+            <!-- <router-link class="singer-img" to='detail' > -->
+                <div class='singer-img'>
+                    <div class=" img-border" @click="hiddenBar">
+                        <img :src="$store.state.songPicture" alt="">
+                    </div>
                 </div>
-            </div>
+            <!-- </router-link> -->
+
             <div class="text">
                 <p>{{$store.state.songName}}</p>
                 <p>{{$store.state.singerName}}</p>
             </div>
+        
+
             <div class="log-cont">
                 <div class="on-off">
                     <span v-if="!$store.state.playState" @click="switchMusic">
@@ -116,8 +122,13 @@ export default {
         this.$store.state.audioElement.play();
       }
       this.$store.commit("setPlayState", !this.$store.state.playState);
+    },
+     hiddenBar(){
+            this.$store.commit('setShowPlayBar',false);       
+            this.$router.push({path:'detail'})
     }
-  }
+  },
+   
 };
 </script>
 

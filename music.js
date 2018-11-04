@@ -52,6 +52,9 @@ const routes = [{
 },{
     path: '/songListCont',
     component: () => import('./src/category/songListCont.vue')
+},{
+    path: '/detail',
+    component: () => import('./src/detail.vue')
 }]
 const router = new VueRouter({
     routes

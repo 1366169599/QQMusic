@@ -100,7 +100,7 @@
             </div> -->
         </div>
         <div class="songs">
-            <div class="songs-item" v-for="(song,index) in songs">
+            <div class="songs-item" v-for="(song,index) in songs" @click="playMusic(song,songs)">
                 <div class="num">{{index+1}}</div>
                 <div class="text">
                     <p class="name">{{song.name}}</p>

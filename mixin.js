@@ -8,13 +8,16 @@ export default {
         goBack() {
             history.back()
         },
-        playMusic(song) {
+        playMusic(song,songs) {
+
             this.$store.state.audioElement.load();
             let playState = this.$store.state.playState;
             this.$store.commit('setSongName',song.name);
             this.$store.commit('setSingerName',getSinger(song));
             this.$store.commit('setSongPicture',song.al.picUrl);
-            this.$store.commit('setShowPlayBar');
+            this.$store.commit('setShowPlayBar',true);
+            this.$store.commit('setSong',song);
+            this.$store.commit('setSongs',songs);
             this.$axios({
                 method: "get",
                 url: "/music/url?id=" + song.id
