@@ -8,7 +8,7 @@
   flex-wrap: wrap;
   .MV-item {
     width: 50%;
-    height: 170px;
+    height: 180px;
     box-sizing: border-box;
     padding: 0 5px;
     .img-cont {
@@ -44,6 +44,7 @@
     }
     .text {
       .name {
+        font-size: 14px;
       }
       .author {
         font-size: 14px;

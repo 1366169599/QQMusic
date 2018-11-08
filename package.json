@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "webpack-dev-server --colors --host 192.168.1.104",
+    "start": "webpack-dev-server --colors --host 0.0.0.0",
     "build": "rimraf 'dist' && NODE_ENV=prd webpack",
     "deploy": "npm run build && gh-pages -d dist"
   },

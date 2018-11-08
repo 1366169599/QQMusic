@@ -2,12 +2,14 @@
 .recommendDj{
     .title{
         height: 50px;
+        line-height: 50px;
     }
     .djRadios{
         display: flex;
         flex-wrap: wrap;
+        justify-content: space-between;
         .djRadio-item{
-            width: 33%;
+            width: 32%;
             margin: 10px 0;
             .name{
                 font-size: 12px;

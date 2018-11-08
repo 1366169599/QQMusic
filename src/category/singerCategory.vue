@@ -31,7 +31,7 @@ export default {
     },
     props:{
         cates: {
-            type:Array
+            type:Array,
         },
 
     },

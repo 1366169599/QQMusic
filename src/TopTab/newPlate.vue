@@ -80,42 +80,43 @@
     }
   }
 }
-.container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  .demo {
-    width: 33%;
-    margin: 10px 0;
-    .title {
-      width: 90%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .img {
-      position: relative;
-      .collect-img {
-        width: 20px;
-        height: 20px;
-        position: absolute;
-        right: 5px;
-        bottom: 5px;
-        img {
-          width: 100%;
-          height: 100%;
-          cursor: pointer;
-          &:hover {
-            transform: scale(1.1);
-          }
-        }
-      }
-      img {
-        width: 100%;
-      }
-    }
-  }
-}}
+// .container {
+//   display: flex;
+//   justify-content: space-between;
+//   flex-wrap: wrap;
+//   .demo {
+//     width: 33%;
+//     margin: 10px 0;
+//     .title {
+//       width: 90%;
+//       white-space: nowrap;
+//       overflow: hidden;
+//       text-overflow: ellipsis;
+//     }
+//     .img {
+//       position: relative;
+//       .collect-img {
+//         width: 20px;
+//         height: 20px;
+//         position: absolute;
+//         right: 5px;
+//         bottom: 5px;
+//         img {
+//           width: 100%;
+//           height: 100%;
+//           cursor: pointer;
+//           &:hover {
+//             transform: scale(1.1);
+//           }
+//         }
+//       }
+//       img {
+//         width: 100%;
+//       }
+//     }
+//   }
+// }
+}
 </style>
 
 <template>
@@ -161,7 +162,7 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <!-- <div class="container">
       <div class="demo" v-for="plate in plates.slice(0,6)">
         <div class="img">
           <div class="collect-img" @click="likeMusic(plate)">
@@ -174,7 +175,7 @@
         <h4 class="title">{{plate.name}}</h4>
         <div>{{plate.singer}}</div>
       </div>
-    </div>
+    </div> -->
     <personalized></personalized>
     <recommendDj></recommendDj>
   </div>
@@ -212,79 +213,76 @@ export default {
           img: "./assets/roll4.jpg"
         }
       ],
-      redHeart: require("../../assets/heart-red.png"),
-      greyHeart: require("../../assets/heart-grey.png"),
-      plates: [
-        {
-          url:
-            "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
-          title: "如何",
-          singer: "张韶涵",
-          collect: false
-        },
-        {
-          url:
-            "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
-          title: "如何",
-          singer: "张韶涵",
-          collect: false
-        },
-        {
-          url:
-            "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
-          title: "如何",
-          singer: "张韶涵",
-          collect: false
-        },
-        {
-          url:
-            "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
-          title: "如何",
-          singer: "张韶涵",
-          collect: false
-        },
-        {
-          url:
-            "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
-          title: "如何",
-          singer: "张韶涵",
-          collect: false
-        }
-      ]
+      // redHeart: require("../../assets/heart-red.png"),
+      // greyHeart: require("../../assets/heart-grey.png"),
+      // plates: [
+      //   {
+      //     url:
+      //       "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
+      //     title: "如何",
+      //     singer: "张韶涵",
+      //     collect: false
+      //   },
+      //   {
+      //     url:
+      //       "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
+      //     title: "如何",
+      //     singer: "张韶涵",
+      //     collect: false
+      //   },
+      //   {
+      //     url:
+      //       "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
+      //     title: "如何",
+      //     singer: "张韶涵",
+      //     collect: false
+      //   },
+      //   {
+      //     url:
+      //       "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
+      //     title: "如何",
+      //     singer: "张韶涵",
+      //     collect: false
+      //   },
+      //   {
+      //     url:
+      //       "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
+      //     title: "如何",
+      //     singer: "张韶涵",
+      //     collect: false
+      //   }
+      // ]
     };
   },
   created() {
-    // this.value='new platesajdfljasldfjsaldfjlsad'
-    // this.$emit('input',this.value);
-    this.$axios({
-      method: "get",
-      url: "/music/url?id=397011"
-    }).then(res => {
-      this.radioStation = res.data.data[0].url;
-    });
-    if (!sessionStorage.getItem("key")) {
-      this.$axios({
-        method: "get",
-        url: "http://101.236.45.250:3000/ajax/musiclist"
-      }).then(res => {
-        this.plates = res.data;
-        sessionStorage.setItem("key", JSON.stringify(res.data));
-      });
-    } else {
-      this.plates = JSON.parse(sessionStorage.getItem("key"));
-    }
-  },
-  methods: {
-    likeMusic(plate) {
       this.$axios({
         method: "get",
         url: "http://101.236.45.250:3000/ajax/collect?id=" + plate._id
       }).then(res => {
         if (res.data.code == 200) {
-          plate.collect = !plate.collect;
+          plate.collect = res.data;
         }
       });
-    },
+    // let a =[
+    // {name:'zy',age:25},
+    // {name:'zy',age:25},
+    // {name:'zy',age:25},
+    // {name:'zy',age:25},
+    // ]
+    // plate.collect =a ;
+
+  },
+  methods: {
+    // likeMusic(plate) {
+    //   this.$axios({
+    //     method: "get",
+    //     url: "http://101.236.45.250:3000/ajax/collect?id=" + plate._id
+    //   }).then(res => {
+    //     if (res.data.code == 200) {
+    //       plate.collect = !plate.collect;
+    //     }
+    //   });
+    // },
     // notLike(plate) {
     //   plate.collect = true;
     // }
