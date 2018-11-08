@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .demo{
+        width: 120px;
+        height: 20px;
+        border-top: 60px double;
+        border-bottom: 20px solid;
+    }
+    .demo1{
+        width: 0;
+        border:50px solid;
+        border-color: #f30 transparent transparent transparent;
+    }
+    .box{
+        border-left: 150px solid #333;
+        background-color: #f0f3f9;
+    }
+    .box > nav{
+        width: 150px;
+        margin-left: -150px;
+        float: left;
+    }
+    .box > section{
+        overflow: hidden;
+    }
+    </style>
+</head>
+<body>
+    <div class="demo"></div>
+    <div class="demo1"></div>
+    <div class="box">
+        <nav>
+            <h3 class="nav">导航1</h3>
+        </nav>
+        <section>
+            <div class="modul">模块1</div>
+        </section>
+    </div>
+</body>
+</html>
