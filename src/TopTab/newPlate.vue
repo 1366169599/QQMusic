@@ -192,7 +192,7 @@ export default {
     return {
       categorys: [
         { img: require("../../assets/singer.png"), name: "歌手", link: "singer" },
-        { img: require("../../assets/ranking.png"), name: "排行榜", link: "rankingList" },
+        { img: require("../../assets/ranking.png"), name: "排行榜", link: "topList" },
         { img: require("../../assets/cat.png"), name: "分类歌单", link: "songList" },
         { img: require("../../assets/radio.png"), name: "电台", link: "djRadios" },
         { img: require("../../assets/video.png"), name: "歌手", link: "singer" }
@@ -255,14 +255,14 @@ export default {
     };
   },
   created() {
-      this.$axios({
-        method: "get",
-        url: "http://101.236.45.250:3000/ajax/collect?id=" + plate._id
-      }).then(res => {
-        if (res.data.code == 200) {
-          plate.collect = res.data;
-        }
-      });
+      // this.$axios({
+      //   method: "get",
+      //   url: "http://101.236.45.250:3000/ajax/collect?id=" + plate._id
+      // }).then(res => {
+      //   if (res.data.code == 200) {
+      //     plate.collect = res.data;
+      //   }
+      // });
     // let a =[
     // {name:'zy',age:25},
     // {name:'zy',age:25},

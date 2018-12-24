@@ -80,7 +80,7 @@
           <img :src="singer.img1v1Url" alt="">
         </div>
         <p>{{singer.name}}</p>
-      </router-link>
+      </router-link> 
     </div>
   </div>
 </template>

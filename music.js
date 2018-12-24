@@ -32,8 +32,8 @@ const routes = [{
     path: '/singerMusic',
     component: () => import('./src/category/singerMusic.vue')
 },{
-    path: '/rankingList',
-    component: () => import('./src/category/rankingList.vue')
+    path: '/topList',
+    component: () => import('./src/category/topList.vue')
 },{
     path: '/catlist',
     component: () => import('./src/category/catlist.vue')
@@ -55,7 +55,13 @@ const routes = [{
 },{
     path: '/detail',
     component: () => import('./src/detail.vue')
-}]
+},{
+    path: '/popCollect',
+    component: () => import('./src/popCollect.vue')
+}, {
+    path: '/rankingList',
+    component: () => import('./src/category/rankingList.vue')
+},]
 const router = new VueRouter({
     routes
 })

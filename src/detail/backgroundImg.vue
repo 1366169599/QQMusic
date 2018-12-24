@@ -1,6 +1,6 @@
 <style lang="less" scoped>
 .picture {
-    height: 610px;;
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;

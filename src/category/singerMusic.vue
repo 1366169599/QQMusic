@@ -110,7 +110,7 @@ export default {
       singerId:'',
       show:1,
     };
-  },
+  }, 
   created() {
     let queryParam = location.hash.split("?")[1];
     let obj = {};

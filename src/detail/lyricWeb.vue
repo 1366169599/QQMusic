@@ -3,7 +3,7 @@
     text-align: center;
     font-size: 16px;
     overflow: auto;
-    height: 600px;
+    height: 70vh;
 }
 </style>
 
