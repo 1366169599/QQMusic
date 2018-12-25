@@ -19,7 +19,7 @@
         <img :src="data.coverImgUrl" alt>
       </div>
 
-      <songsList :items='songs' @foo='foo'></songsList>
+      <songsList :items='songs' @educe='educe'></songsList>
       <songMenu :show='show' :song='song' @close='closePop'></songMenu>
     </div>
   </div>
@@ -53,7 +53,7 @@ export default {
     });
   },
   methods:{
-      foo(item){
+      educe(item){
           this.song=item;
           this.show=true
       },

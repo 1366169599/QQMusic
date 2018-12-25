@@ -61,7 +61,10 @@ const routes = [{
 }, {
     path: '/rankingList',
     component: () => import('./src/category/rankingList.vue')
-},]
+}, {
+    path: '/comment',
+    component: () => import('./src/detail/song-comment.vue')
+}]
 const router = new VueRouter({
     routes
 })
@@ -72,3 +75,4 @@ new Vue({
     render: h => h(App)
 
 })
+

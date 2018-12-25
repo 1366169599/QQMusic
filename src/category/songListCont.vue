@@ -3,19 +3,19 @@
   height: 240px;
   background: rgb(82, 82, 235);
   color: white;
-  .arrows{
-      width: 60px;
-      height: 60px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      img{
-          width: 70%;
-          height: 70%;
-      }
+  .arrows {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 70%;
+      height: 70%;
+    }
   }
   .title {
     line-height: 60px;
@@ -66,52 +66,55 @@
     }
   }
 }
-.songs-item {
-  display: flex;
-  .num {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .text {
-    box-sizing: border-box;
-    border-bottom: 1px solid #d1d1d1;
-    flex-grow: 1;
-    .name {
-      padding: 3px 0;
-    }
-    .creator {
-      font-size: 12px;
-      color: gray;
-    }
-  }
-}
+// .songs-item {
+//   display: flex;
+//   .num {
+//     width: 50px;
+//     height: 50px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+//   .text {
+//     box-sizing: border-box;
+//     border-bottom: 1px solid #d1d1d1;
+//     flex-grow: 1;
+//     .name {
+//       padding: 3px 0;
+//     }
+//     .creator {
+//       font-size: 12px;
+//       color: gray;
+//     }
+//   }
+// }
 </style>
 
 <template>
-    <div>
-        <div class="album-cont">
-            <div class="arrows" @click="goBack">
-                <img src="../../assets/arrowsWhite.png" alt="">
-            </div>
-            <h2 class="title">歌单</h2>
-            <div class="album">
-                <div class="img-cont">
-                    <img :src="songListImg" alt="">
-                </div>
-                <div class="text">
-                    <p class="songListName">{{songListName}}</p>
-                    <p class="singer">
-                        <span class="creatorImg"><img :src="creatorImg" alt=""></span>
-                        <span class="creator">{{creator}}</span>
-                    </p>
-                    <p class="description">简介:{{description}}</p>
-                </div>
-            </div>
+  <div>
+    <div class="album-cont">
+      <div class="arrows" @click="goBack">
+        <img src="../../assets/arrowsWhite.png" alt>
+      </div>
+      <h2 class="title">歌单</h2>
+      <div class="album">
+        <div class="img-cont">
+          <img :src="songListImg" alt>
         </div>
-        <div class="songs">
+        <div class="text">
+          <p class="songListName">{{songListName}}</p>
+          <p class="singer">
+            <span class="creatorImg">
+              <img :src="creatorImg" alt>
+            </span>
+            <span class="creator">{{creator}}</span>
+          </p>
+          <p class="description">简介:{{description}}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="songs">
             <div class="songs-item" v-for="(song,index) in songs" @click="playMusic(song,songs)">
                 <div class="num">{{index+1}}</div>
                 <div class="text">
@@ -119,11 +122,15 @@
                     <p class="author">{{multiSinger(song)}}</p>
                 </div>
             </div>
-        </div>
-    </div>
+    </div>-->
+    <songsList :items="songs" @educe="educe"></songsList>
+    <songMenu :show='show' :song='song' @close='closePop'></songMenu>
+
+  </div>
 </template>
 <script>
-
+import songsList from "../component/songsList.vue";
+import songMenu from "../component/pop-up.vue";
 export default {
   data() {
     return {
@@ -134,16 +141,24 @@ export default {
       description: "",
       songListId: "",
       songs: [],
-      authors: []
+      show:false,
+      song:{},
     };
   },
   methods: {
-    multiSinger(song) {
-      return song.ar.map(item => {
-          return item.name;
-        })
-        .join("/");
-    }   
+    // multiSinger(song) {
+    //   return song.ar.map(item => {
+    //       return item.name;
+    //     })
+    //     .join("/");
+    // }
+    educe(item) {
+      this.song = item;
+      this.show = true;
+    },
+    closePop(){
+      this.show=false
+    }
   },
   created() {
     let queryParam = location.hash.split("?")[1];
@@ -163,6 +178,10 @@ export default {
       this.description = res.data.playlist.description;
       this.songs = res.data.playlist.tracks;
     });
+  },
+  components: {
+    songsList,
+    songMenu
   }
 };
 </script>

@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     showPopMenu(item) {
-      this.$emit('foo',item)
+      this.$emit('educe',item)
     }
   }
 };

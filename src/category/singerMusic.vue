@@ -131,7 +131,6 @@ export default {
   },
   methods:{
       tabShow(show){
-          console.log(123)
           this.show=show;
       }
   },

@@ -33,19 +33,22 @@
       }
     }
   }
-
+  .prograss{
+    height: 5vh;
+    background: aqua;
+  }
   .play-button {
     position: fixed;
     left: 0;
-    bottom: 0;
+    bottom: 5vh;
     right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 20vh;
+    height: 10vh;
     .comment-button {
       width: 20vw;
-      height: 20vh;
+      height: 10vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -55,7 +58,7 @@
       }
     }
     .button-cont {
-      height: 20vh;
+      height: 10vh;
       width: 60vw;
       display: flex;
       justify-content: space-around;
@@ -63,7 +66,7 @@
       position: relative;
       .last,
       .next {
-        height: 20vh;
+        height: 10vh;
         width: 20vw;
         display: flex;
         justify-content: center;
@@ -74,7 +77,7 @@
         }
       }
       .on-off-cont {
-        width: 20vh;
+        width: 10vh;
         height: 20vw;
         position: relative;
         .on-off {
@@ -147,11 +150,11 @@
         <backgroundImg v-if="show"></backgroundImg>
         <lyricWeb v-else></lyricWeb>
       </div>
-
+      <div class="prograss"></div>
       <div class="play-button">
-        <div class="comment-button">
+        <router-link class="comment-button" :to="'comment?id='+$store.state.song.id">
           <img src="../assets/comment.png" alt>
-        </div>
+        </router-link>
 
         <div class="button-cont">
           <div class="last" @click="lastSong">
@@ -257,7 +260,8 @@ export default {
   components: {
     backgroundImg,
     lyricWeb
-  }
+  },
+
 };
 </script>
 
