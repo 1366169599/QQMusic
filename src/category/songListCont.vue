@@ -1,7 +1,7 @@
 <style lang="less" scoped>
 .album-cont {
   height: 240px;
-  background: rgb(82, 82, 235);
+  // background: rgb(82, 82, 235);
   color: white;
   .arrows {
     width: 60px;
@@ -129,6 +129,7 @@
   </div>
 </template>
 <script>
+import '../util/rgbaster.js';
 import songsList from "../component/songsList.vue";
 import songMenu from "../component/pop-up.vue";
 export default {
@@ -177,7 +178,23 @@ export default {
       this.creatorImg = res.data.playlist.creator.avatarUrl;
       this.description = res.data.playlist.description;
       this.songs = res.data.playlist.tracks;
+
+      this.$nextTick(()=> {
+        RGBaster.colors(this.songListImg, {
+          exclude: [ 'rgb(255,255,255)', 'rgb(0,0,0)' ],
+            success: function (payload) {
+                console.log(payload.dominant);
+                console.log(payload.secondary);
+                console.log(payload.palette);
+                console.log(payload);
+                document.getElementsByClassName('album-cont')[0].style =
+                `background:linear-gradient(45deg, ${payload.dominant}, ${payload.secondary})`
+            }
+        });
+      })
+
     });
+    
   },
   components: {
     songsList,

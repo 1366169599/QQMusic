@@ -64,6 +64,10 @@ const routes = [{
 }, {
     path: '/comment',
     component: () => import('./src/detail/song-comment.vue')
+}
+, {
+    path: '/mvdetail',
+    component: () => import('./src/discover/mv-detail.vue')
 }]
 const router = new VueRouter({
     routes

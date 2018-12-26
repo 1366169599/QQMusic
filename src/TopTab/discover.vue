@@ -11,6 +11,7 @@
     height: 180px;
     box-sizing: border-box;
     padding: 0 5px;
+    text-decoration: none;
     .img-cont {
       width: 100%;
       height: 120px;
@@ -45,10 +46,15 @@
     .text {
       .name {
         font-size: 14px;
+        color: black;
       }
       .author {
-        font-size: 14px;
+        font-size: 12px;
         color: #d1d1d1;
+        width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
   }
@@ -58,19 +64,27 @@
   <div>
     <p class="recommend-mv">推荐MV</p>
     <div class="MV-container">
-      <div class="MV-item" v-for="mv in mvs">
+      <router-link class="MV-item" v-for="mv in mvs" :to="'mvdetail?id='+mv.id">
+
         <div class="img-cont">
-          <img :src="mv.picUrl" alt="">
+          <img :src="mv.picUrl" alt>
           <p class="playCount">
-            <span class="logo"><img src="../../assets/playcount.png" alt=""></span>
+            <span class="logo">
+              <img src="../../assets/playcount.png" alt>
+            </span>
             <span class="num">{{mv.playCount}}</span>
           </p>
         </div>
         <div class="text">
           <p class="name">{{mv.name}}</p>
-          <p class="author">{{mv.artistName}}</p>
+          <p class="author">
+            {{mv.artists.map(item=>{
+              return item.name
+            }).join('/')}}
+          </p>
         </div>
-      </div>
+
+      </router-link>
     </div>
   </div>
 </template>
@@ -86,7 +100,6 @@ export default {
       method: "get",
       url: "/personalized/mv"
     }).then(res => {
-      console.log(res.data);
       this.mvs = res.data.result;
     });
   }
