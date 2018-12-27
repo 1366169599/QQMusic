@@ -183,10 +183,10 @@ export default {
         RGBaster.colors(this.songListImg, {
           exclude: [ 'rgb(255,255,255)', 'rgb(0,0,0)' ],
             success: function (payload) {
-                console.log(payload.dominant);
-                console.log(payload.secondary);
-                console.log(payload.palette);
-                console.log(payload);
+                // console.log(payload.dominant);
+                // console.log(payload.secondary);
+                // console.log(payload.palette);
+                // console.log(payload);
                 document.getElementsByClassName('album-cont')[0].style =
                 `background:linear-gradient(45deg, ${payload.dominant}, ${payload.secondary})`
             }

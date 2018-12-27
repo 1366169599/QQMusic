@@ -7,17 +7,23 @@
     .djRadios{
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: space-evenly;
         .djRadio-item{
-            width: 32%;
-            margin: 10px 0;
+            width: 30%;
+            margin-bottom: 10px; 
             .name{
                 font-size: 12px;
             }
             .img-cont{
+                 padding-top: 100%;
                 width: 100%;
+                position: relative;
                 img{
+                position: absolute;
+                top: 0;
+                left: 0;
                     width: 100%;
+                    height: 100%;
                 }
             }
         }
@@ -30,14 +36,16 @@
         <div class="title">
             <h2>推荐电台</h2>
         </div>
+
         <div class="djRadios">
         <div class="djRadio-item" v-for='djRadio in djRadios.slice(0,6)'>
             <div class='img-cont'>
                 <img :src="djRadio.picUrl" alt="">
             </div>
-            <p class='name'>{{djRadio.rcmdtext}}</p>
+            <p class='name'>{{djRadio.name}}</p>
         </div>
         </div>
+
     </div>
 </template>
 <script>
@@ -51,9 +59,9 @@ export default {
     created(){
         this.$axios({
             methed:'get',
-            url:'/dj/recommend'
+            url:'/personalized/djprogram'
         }).then(res=>{
-            this.djRadios=res.data.djRadios
+            this.djRadios=res.data.result
         })
     }
 }

@@ -11,10 +11,10 @@
     .songlists{
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: space-evenly;
         .songlist-item{
-            width: 32%;
-            margin: 10px 0;
+            width: 30%;
+            margin-bottom: 10px;
             .name{
                 font-size: 12px;
             }

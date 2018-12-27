@@ -1,6 +1,6 @@
 <style lang="less" scoped>
 .container {
-  background: gray;
+  // background: gray;
   height: 100vh;
   position: relative;
   overflow: hidden;
@@ -33,9 +33,9 @@
       }
     }
   }
-  .prograss{
+  .prograss {
     height: 5vh;
-    background: aqua;
+    // background: aqua;
   }
   .play-button {
     position: fixed;
@@ -191,7 +191,7 @@
 <script>
 import backgroundImg from "./detail/backgroundImg.vue";
 import lyricWeb from "./detail/lyricWeb.vue";
-
+import "./util/rgbaster.js";
 export default {
   data() {
     return {
@@ -243,6 +243,7 @@ export default {
         this.playMusic(songs[len - 1], songs);
       }
       this.$store.commit("setShowPlayBar", false);
+    this.changeBg()
     },
     nextSong() {
       let song = this.$store.state.song;
@@ -255,13 +256,36 @@ export default {
         this.playMusic(songs[index + 1], songs);
       }
       this.$store.commit("setShowPlayBar", false);
+
+    this.changeBg()
+    },
+
+    changeBg() {
+      this.$nextTick(() => {
+        RGBaster.colors(this.$store.state.song.al.picUrl, {
+          exclude: ["rgb(255,255,255)", "rgb(0,0,0)"],
+          success: function(payload) {
+            // console.log(payload.dominant);
+            // console.log(payload.secondary);
+            // console.log(payload.palette);
+            // console.log(payload);
+            document.getElementsByClassName(
+              "container"
+            )[0].style = `background:linear-gradient(45deg, ${
+              payload.dominant
+            }, ${payload.secondary})`;
+          }
+        });
+      });
     }
+  },
+  mounted() {
+    this.changeBg()
   },
   components: {
     backgroundImg,
     lyricWeb
-  },
-
+  }
 };
 </script>
 

@@ -57,8 +57,8 @@
 
 <template>
   <div>
+    <div v-if="items.length">
     <div class="title">精彩评论</div>
-
     <div class="commment-item" v-for="item in items">
       <div class="author-img">
         <img :src="item.user.avatarUrl" alt>
@@ -76,6 +76,7 @@
         <div class="comment">{{item.content}}</div>
       </div>
     </div>
+  </div>
 
     <div class="title">最新评论({{total}})</div>
 
