@@ -13,7 +13,7 @@ export default new Vuex.Store({
         songName:'',
         songPicture:'',
         song:{},
-        songs:[]
+        songs:[],
     },
     mutations: {
         setAudioElement(state, audioElement) {
@@ -25,20 +25,14 @@ export default new Vuex.Store({
         setPlayState(state,playState) {
             state.playState = playState;
         },
-        setSingerName(state,singerName) {
-            state.singerName = singerName ;
-        },
-        setSongName(state,songName) {
-            state.songName = songName;
-        },
-        setSongPicture(state,songPicture) {
-            state.songPicture = songPicture;
-        },
         setShowPlayBar(state,boolearn) {
             state.showPlayBar = boolearn;
         },
         setSong(state,song) {
             state.song = song;
+            state.songName = song.name;
+            state.singerName = getSinger(song);
+            state.songPicture = song.al.picUrl;
         },
         setSongs(state,songs) {
             state.songs = songs;
@@ -48,3 +42,9 @@ export default new Vuex.Store({
     }
 
 })
+
+function getSinger(song) {
+    return song.ar.map(item => {
+        return item.name
+    }).join('/')
+}

@@ -1,29 +1,32 @@
 <style lang="less" scoped>
-video::-webkit-media-controls-play-button {display:none}
+video::-webkit-media-controls-play-button {
+  display: none;
+}
 .video-cont {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 100;
   video {
     width: 100%;
     height: 100%;
   }
-  .play-button{
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
-      display: none;
-      .but{
-          img{
-              width: 50px;
-              height: 50px;
-          }
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    .but {
+      img {
+        width: 50px;
+        height: 50px;
       }
+    }
   }
-  .show-but{
-      display: block;
+  .show-but {
+    display: block;
   }
 }
 .container {
@@ -55,24 +58,27 @@ video::-webkit-media-controls-play-button {display:none}
       color: gray;
     }
   }
-  .recommend {
-    padding-left: 5px;
-    background: #d1d1d1;
-    line-height: 25px;
-    color: gray;
-    font-size: 14px;
-  }
-  
 }
 </style>
 
 <template>
   <div>
     <div class="video-cont" id="videoCont">
-      <video @loadeddata="calcHeight" :src="data.brs[240]" autoplay ref="myVideo" controls @click="showButton"></video>
+      <video
+        @loadeddata="calcHeight"
+        :src="data.brs[240]"
+        autoplay
+        ref="myVideo"
+        controls
+        @click="showButton"
+      ></video>
       <div class="play-button" :class="{'show-but':showPlayButton}" ref="button">
-          <div class="but" v-if="play" @click="playVid()"><img src="../../assets/play.png" alt=""></div>
-          <div class="but" v-else @click="pauseVid()"><img src="../../assets/stop.png" alt=""></div>
+        <div class="but" v-if="play" @click="playVid()">
+          <img src="../../assets/play.png" alt>
+        </div>
+        <div class="but" v-else @click="pauseVid()">
+          <img src="../../assets/stop.png" alt>
+        </div>
       </div>
     </div>
 
@@ -101,15 +107,15 @@ video::-webkit-media-controls-play-button {display:none}
           <div class="num">{{data.shareCount}}</div>
         </div>
       </div>
-      <div class="recommend">相关推荐</div>
+      <similarMV :mvList="mvList" @refresh='getAjaxData'></similarMV>
       <mvComment :url="url"></mvComment>
     </div>
   </div>
 </template>
 <script>
-import lodash from 'lodash'
-console.log(lodash.debounce)
+import lodash from "lodash";
 import mvComment from "../component/comment.vue";
+import similarMV from "./similarMV.vue";
 export default {
   data() {
     return {
@@ -118,8 +124,9 @@ export default {
       },
       height: "",
       url: "/comment/mv?id=",
-      play:false,
-      showPlayButton:false,
+      play: false,
+      showPlayButton: false,
+      mvList: []
     };
   },
   created() {
@@ -128,56 +135,64 @@ export default {
     has.split("&").forEach(item => {
       obj[item.split("=")[0]] = item.split("=")[1];
     });
-    console.log(obj.id);
-    this.$axios({
-      method: "get",
-      url: "/mv/detail?mvid=" + obj.id
-    }).then(res => {
-      this.data = res.data.data;
-    });
+    this.getAjaxData(obj.id);
   },
   methods: {
+    getAjaxData(id) {
+      this.$axios({
+        method: "get",
+        url: "/mv/detail?mvid=" + id
+      }).then(res => {
+        this.data = res.data.data;
+      });
+      this.$axios({
+        method: "get",
+        url: "/simi/mv?mvid=" + id
+      }).then(res => {
+        this.mvList = res.data.mvs;
+      });
+    },
     calcHeight() {
       this.height = document.getElementById("videoCont").offsetHeight;
     },
     playVid() {
       this.$refs.myVideo.play();
-      this.play=!this.play
-        this.threeHide();
-    // setTimeout(this.hiddenButton,3000)
+      this.play = !this.play;
+      this.threeHide();
+      // setTimeout(this.hiddenButton,3000)
     },
     pauseVid() {
       this.$refs.myVideo.pause();
-      this.play=!this.play
+      this.play = !this.play;
     },
 
     threeHide: lodash.debounce(function() {
-        if(this.play){
-        this.showPlayButton =true;
-        }else{
-        this.showPlayButton =false;
-        }
+      if (this.play) {
+        this.showPlayButton = true;
+      } else {
+        this.showPlayButton = false;
+      }
     }, 3000),
-    showButton(){
-        this.showPlayButton=!this.showPlayButton
-        this.threeHide();
-
+    showButton() {
+      this.showPlayButton = !this.showPlayButton;
+      this.threeHide();
     },
-    hiddenButton(){
-        this.showPlayButton=false
+    hiddenButton() {
+      this.showPlayButton = false;
     }
   },
-//   watch:{
-//       showPlayButton:function(){
+  //   watch:{
+  //       showPlayButton:function(){
 
-//       }
-//   },
+  //       }
+  //   },
   //   mounted() {
   //       this.height = document.getElementById('videoCont').offsetHeight;
   //       console.log(this.height)
 
   //   },
   components: {
+    similarMV,
     mvComment
   }
 };

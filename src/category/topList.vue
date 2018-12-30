@@ -46,11 +46,14 @@
         }
       }
     .top-three-song{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
       p{
         font-size: 14px;
-        line-height: 33px;
+        // line-height: 33px;
         padding-left: 10px;
-        width: 250px;
+        width: 200px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow:ellipsis;

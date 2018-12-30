@@ -71,9 +71,8 @@
 <template>
     <div>
         <router-view></router-view>
-        <audio id='myAudio' type="audio/mpeg"></audio>
-        <div class="play-bar" v-show="$store.state.showPlayBar">
-            
+        <audio id='myAudio' type="audio/mpeg" @ended="nextSongs"></audio>
+        <div class="play-bar" v-show="$store.state.showPlayBar">           
             <!-- <router-link class="singer-img" to='detail' > -->
                 <div class='singer-img'>
                     <div class=" img-border" @click="hiddenBar">
@@ -126,6 +125,18 @@ export default {
      hiddenBar(){
             this.$store.commit('setShowPlayBar',false);       
             this.$router.push({path:'detail'})
+    },
+    nextSongs(){
+      let song = this.$store.state.song;
+      let songs = this.$store.state.songs;
+      let index = songs.indexOf(song);
+      let len = songs.length;
+      if (index == len - 1) {
+        this.playMusic(songs[0], songs);
+      } else {
+        this.playMusic(songs[index + 1], songs);
+      }
+      this.$store.commit("setShowPlayBar", false);
     }
   },
    

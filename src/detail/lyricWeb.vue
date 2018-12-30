@@ -4,6 +4,7 @@
     font-size: 16px;
     overflow: auto;
     height: 70vh;
+    color: white;
 }
 </style>
 

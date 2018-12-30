@@ -5,6 +5,8 @@
     .mv-item{
         width: 50%;
         padding-bottom: 20px;
+        color: black;
+        text-decoration: none;
         .img-cont{
             width: 100%;
             height: 120px;
@@ -34,7 +36,8 @@
 <template>
     <div>
         <div class="mvs">
-        <div class="mv-item" v-for="mv in mvSize">
+
+        <router-link class="mv-item" v-for="mv in mvSize" :to="'mvdetail?id='+mv.id">
             <div class="img-cont">
                 <img :src="mv.imgurl" alt="">
                 <p class="playCount">
@@ -43,7 +46,8 @@
                 </p>
             </div>
             <p class="name">{{mv.name}}</p>
-        </div>
+        </router-link>
+
         </div>
     </div>
 </template>

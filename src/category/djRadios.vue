@@ -67,7 +67,6 @@ export default {
       url: "/dj/catelist"
     }).then(res => {
     //   console.log(res.categories);
-      console.log(12345);
       this.djRadios = res.data.categories;
     });
   }

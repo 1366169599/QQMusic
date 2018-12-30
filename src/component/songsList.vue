@@ -44,7 +44,7 @@
     <div class="container">
       <div class="song" v-for="(item,index) in items">
         <div class="num">{{index+1}}</div>
-        <div class="song-demo" @click="playMusic(item,items)">
+        <div class="song-demo" @click="playSong(item,items)">
           <p class="song-name">{{item.name}}</p>
           <p class="song-author">
               {{item.ar.map(element=>{
@@ -70,6 +70,10 @@ export default {
   methods: {
     showPopMenu(item) {
       this.$emit('educe',item)
+    },
+    playSong(item,items){
+      this.playMusic(item,items)
+      this.$store.commit("setPlayState", true);     
     }
   }
 };

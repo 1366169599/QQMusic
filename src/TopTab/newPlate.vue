@@ -137,14 +137,16 @@
       </router-link>
     </div>
     <div class="generalize">
+
       <div class="m-station">
-        <div class="on-off" @click="onOff">
-          <audio :src="radioStation" ref='stationRadio'></audio>
+        <div class="on-off" @click="playSongs(newsong[0],newsong)">
+          <!-- <audio :src="radioStation" ref='stationRadio'></audio> -->
           <img src="../../assets/stop.png" alt="" class="on-off-log" v-if="stop">
           <img src="../../assets/play.png" alt="" class="on-off-log" v-else>
         </div>
         <p class="text">个性电台</p>
       </div>
+
       <div class="album">
         <div class="new-song">
           <div class="text">
@@ -213,64 +215,16 @@ export default {
           img: "./assets/roll4.jpg"
         }
       ],
-      // redHeart: require("../../assets/heart-red.png"),
-      // greyHeart: require("../../assets/heart-grey.png"),
-      // plates: [
-      //   {
-      //     url:
-      //       "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
-      //     title: "如何",
-      //     singer: "张韶涵",
-      //     collect: false
-      //   },
-      //   {
-      //     url:
-      //       "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
-      //     title: "如何",
-      //     singer: "张韶涵",
-      //     collect: false
-      //   },
-      //   {
-      //     url:
-      //       "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
-      //     title: "如何",
-      //     singer: "张韶涵",
-      //     collect: false
-      //   },
-      //   {
-      //     url:
-      //       "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
-      //     title: "如何",
-      //     singer: "张韶涵",
-      //     collect: false
-      //   },
-      //   {
-      //     url:
-      //       "https://raw.githubusercontent.com/1366169599/QQMusic/gh-pages/assets/musicPlate2.jpg",
-      //     title: "如何",
-      //     singer: "张韶涵",
-      //     collect: false
-      //   }
-      // ]
+      newsong:[]
     };
   },
   created() {
-      // this.$axios({
-      //   method: "get",
-      //   url: "http://101.236.45.250:3000/ajax/collect?id=" + plate._id
-      // }).then(res => {
-      //   if (res.data.code == 200) {
-      //     plate.collect = res.data;
-      //   }
-      // });
-    // let a =[
-    // {name:'zy',age:25},
-    // {name:'zy',age:25},
-    // {name:'zy',age:25},
-    // {name:'zy',age:25},
-    // ]
-    // plate.collect =a ;
-
+       this.$axios({
+        method:'get',
+        url:'/playlist/detail?id=2578068117'
+      }).then(res=>{
+        this.newsong=res.data.playlist.tracks
+      })
   },
   methods: {
     // likeMusic(plate) {
@@ -286,12 +240,8 @@ export default {
     // notLike(plate) {
     //   plate.collect = true;
     // }
-    onOff() {
-      if (this.stop) {
-        this.$refs.stationRadio.pause();
-      } else {
-        this.$refs.stationRadio.play();
-      }
+    playSongs(song,songs) {
+      this.playMusic(song,songs)
       this.stop = !this.stop;
     }
   },

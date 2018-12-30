@@ -90,7 +90,7 @@
                 <img src="../../assets/arrowsWhite.png" alt="">
             </span>
             <span class="search">
-                <input type="text" placeholder="搜索音乐、视频、歌单、歌手" @input="search($event)">
+                <input type="text" v-model='searchValue' placeholder="搜索音乐、视频、歌单、歌手" @input="search()">
             </span>
             <span class="img-cont">
                 <img src="../../assets/microphone.png" alt="">
@@ -103,7 +103,7 @@
             </p>
         </div>
         <div class="recommend" v-if="showArtist">
-            <p class="title">搜索{{keyword}}</p>
+            <p class="title">搜索“{{searchValue}}”</p>
             <p class="artist" v-for="artist in artists">
                 <span class="img-cont">
                     <img src="../../assets/searchblack.png" alt="">
@@ -120,27 +120,26 @@ export default {
     return {
       hotSearch: [],
       artists: [],
-      keyword: "",
       showArtist:false,
+      searchValue:''
     };
   },
   methods: {
-    search(event) {
-      this.keyword = event.target.value;
-      if (this.keyword) {
+    search() {
+      if (this.searchValue) {
           this.showArtist=true
         this.$axios({
           method: "get",
           url:
             "/search/suggest?type=100&keywords=" +
-            this.keyword
+            this.searchValue
         }).then(res => {
           this.artists = res.data.result.artists;
-          if(this.artists && this.artists.length==1){
-              this.$router.push({
-                  path:'singerMusic?id='+this.artists[0].id,
-              })
-          }
+        //   if(this.artists && this.artists.length==1){
+        //       this.$router.push({
+        //           path:'singerMusic?id='+this.artists[0].id,
+        //       })
+        //   }
         });
       }else{
           this.showArtist=false

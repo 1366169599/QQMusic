@@ -31,7 +31,7 @@
 </style>
 <template>
   <div>
-    <div class="singer-musiclist">
+    <!-- <div class="singer-musiclist">
       <div class="song-name-bar" v-for="song in hotSongs">
         <div class="song-demo" @click="playMusic(song,hotSongs)">
           <p class="song-name">{{song.name}}</p>
@@ -39,12 +39,16 @@
         </div>
         <p class="pop-menu" @click="showPopMenu(song)">···</p>
       </div>
-    </div>
-    <pop-menu :show='showPop' :song='song' @changePopState='changePopState'></pop-menu>
+    </div> -->
+
+
+    <songsList :items="hotSongs" @educe="educe"></songsList>
+    <songMenu :show='showPop' :song='song' @close='closePop'></songMenu>
   </div>
 </template>
 <script>
-import popMenu from "../songMenu.vue";
+import songsList from "../component/songsList.vue";
+import songMenu from "../component/pop-up.vue";
 export default {
   data() {
     return {
@@ -62,9 +66,13 @@ export default {
       this.showPop = true;
       this.song=song
     },
-    changePopState(){
+    closePop(){
         this.showPop=false
-    }
+    },
+     educe(item) {
+      this.song = item;
+      this.showPop = true;
+    },
     // playMusic(song) {
     //   this.playState = !this.playState;
     //   // this.currentSong = song.mp3Url;
@@ -98,7 +106,8 @@ export default {
     });
   },
   components: {
-    popMenu
+    songsList,
+    songMenu
   }
 };
 </script>
