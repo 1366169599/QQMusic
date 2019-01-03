@@ -23,18 +23,19 @@
       box-sizing: border-box;
       padding-left: 10px;
     }
-    button {
+  }
+   button {
       display: inline-block;
-      width: 50px;
+      width: 100px;
       height: 30px;
       font-size: 20px;
       line-height: 30px;
       background: #d1d1d1;
       box-sizing: border-box;
-      margin-left: 10px;
+      margin-left: 100px;
+      margin-top: 20px;
       outline: none;
     }
-  }
 }
 </style>
 
@@ -60,8 +61,8 @@
       <p>
         <span>利率:</span>
         <input type="text" v-model="interest">
-        <button @click="count">计算</button>
       </p>
+        <button @click="count">计算</button>
     </div>
   </div>
 </template>
