@@ -136,7 +136,7 @@ export default {
       } else {
         this.playMusic(songs[index + 1], songs);
       }
-      this.$store.commit("setShowPlayBar", false);
+      // this.$store.commit("setShowPlayBar", false);
     }
   },
    

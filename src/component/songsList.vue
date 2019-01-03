@@ -73,7 +73,9 @@ export default {
     },
     playSong(item,items){
       this.playMusic(item,items)
-      this.$store.commit("setPlayState", true);     
+      this.$store.commit('setShowPlayBar',true);
+      this.$store.commit("setPlayState", true);  
+
     }
   }
 };

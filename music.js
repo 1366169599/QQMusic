@@ -68,6 +68,9 @@ const routes = [{
 , {
     path: '/mvdetail',
     component: () => import('./src/discover/mv-detail.vue')
+}, {
+    path: '/count',
+    component: () => import('./src/count/count.vue')
 }]
 const router = new VueRouter({
     routes

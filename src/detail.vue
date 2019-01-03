@@ -26,10 +26,18 @@
         line-height: 5vh;
         font-size: 20px;
         margin-top: 5px;
+        width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       .author {
         font-size: 14px;
         color: #d1d1d1;
+        width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
   }
@@ -98,9 +106,9 @@
     }
   }
 
-  .panel {
-    // height: 70vh;
-  }
+  // .panel {
+  //   // height: 70vh;
+  // }
   .menu-mask {
     position: absolute;
     left: 0;
@@ -230,7 +238,7 @@ export default {
     },
     playMenuMusic(song, songs) {
       this.playMusic(song, songs);
-      this.$store.commit("setShowPlayBar", false);
+      // this.$store.commit("setShowPlayBar", false);
     },
     lastSong() {
       let song = this.$store.state.song;
@@ -242,8 +250,8 @@ export default {
         let len = songs.length;
         this.playMusic(songs[len - 1], songs);
       }
-      this.$store.commit("setShowPlayBar", false);
-    this.changeBg()
+      // this.$store.commit("setShowPlayBar", false);
+      this.changeBg();
     },
     nextSong() {
       let song = this.$store.state.song;
@@ -255,9 +263,9 @@ export default {
       } else {
         this.playMusic(songs[index + 1], songs);
       }
-      this.$store.commit("setShowPlayBar", false);
+      // this.$store.commit("setShowPlayBar", false);
 
-    this.changeBg()
+      this.changeBg();
     },
 
     changeBg() {
@@ -280,7 +288,7 @@ export default {
     }
   },
   mounted() {
-    this.changeBg()
+    this.changeBg();
   },
   components: {
     backgroundImg,
