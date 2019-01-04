@@ -1,5 +1,6 @@
 <style lang="less" scoped>
 .container {
+  text-align: center;
   p {
       font-size: 0;
     span {
@@ -10,9 +11,9 @@
       font-size: 20px;
       margin: 5px;
       text-align: center;
-      border: 1px solid black;
+      // border: 1px solid black;
       box-sizing: border-box;
-      color: green;
+      color:gray;
     }
     input {
       display: inline-block;
@@ -32,9 +33,16 @@
       line-height: 30px;
       background: #d1d1d1;
       box-sizing: border-box;
-      margin-left: 100px;
+      // margin-left: 100px;
       margin-top: 20px;
       outline: none;
+      cursor: pointer;
+    }
+    .inputMony ,.inputYear, .inputTime ,.inputAll{
+      color: black
+    }
+    .interest{
+      color: green;
     }
 }
 </style>
@@ -43,26 +51,26 @@
   <div>
     <div class="container">
       <p>
-        <span>保费:</span>
+        <span :class="{'inputMony':inputMony}">保费:</span>
         <input type="text" v-model="mony">
       </p>
       <p>
-        <span>年限:</span>
+        <span :class="{'inputYear':inputYear}">年限:</span>
         <input type="text" v-model="year">
       </p>
       <p>
-        <span>存放时间:</span>
+        <span :class="{'inputTime':inputTime}">存放时间:</span>
         <input type="text" v-model="time">
       </p>
       <p>
-        <span>赎回金额:</span>
+        <span :class="{'inputAll':inputAll}">赎回金额:</span>
         <input type="text" v-model="all">
       </p>
       <p>
-        <span>利率:</span>
+        <span class="interest">利率:</span>
         <input type="text" v-model="interest">
       </p>
-        <button @click="count">计算</button>
+        <button @click="count" :disabled=allowUse>计算</button>
     </div>
   </div>
 </template>
@@ -74,22 +82,45 @@ export default {
       year: "",
       time: "",
       all: "",
-      interest: ""
+      interest: "",
     };
+  },
+  computed:{
+    inputMony(){
+      return !!this.mony
+    },
+    inputYear(){
+      return !!this.year
+    },
+    inputTime(){
+      return !!this.time
+    },
+    inputAll(){
+      return !!this.all
+    },
+    allowUse(){
+      if(this.mony&&this.year&&this.time&&this.all){
+        return false
+      }else{
+        return true
+      }
+    }
   },
   methods: {
     count() {
       let sum = 0;
       let tem = 0;
-      for (var i = 0; i <= this.year; i++) {
+      if(this.time>=this.year){
+        for (var i = 0; i <= this.year; i++) {
         sum += i;
       }
       tem = sum * this.mony + (this.time - this.year) * (this.mony * this.year);
       this.interest = (this.all - this.mony * this.year) / tem;
-      console.log(sum);
-      console.log(tem);
-      console.log(this.interest);
-    }
+      }else{
+        alert('存放时间不小于年限')
+      }
+      
+    },
   }
 };
 </script>
