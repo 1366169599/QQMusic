@@ -2,7 +2,7 @@
 .container {
   text-align: center;
   p {
-      font-size: 0;
+    font-size: 0;
     span {
       display: inline-block;
       width: 100px;
@@ -13,7 +13,7 @@
       text-align: center;
       // border: 1px solid black;
       box-sizing: border-box;
-      color:gray;
+      color: gray;
     }
     input {
       display: inline-block;
@@ -25,25 +25,28 @@
       padding-left: 10px;
     }
   }
-   button {
-      display: inline-block;
-      width: 100px;
-      height: 30px;
-      font-size: 20px;
-      line-height: 30px;
-      background: #d1d1d1;
-      box-sizing: border-box;
-      // margin-left: 100px;
-      margin-top: 20px;
-      outline: none;
-      cursor: pointer;
-    }
-    .inputMony ,.inputYear, .inputTime ,.inputAll{
-      color: black
-    }
-    .interest{
-      color: green;
-    }
+  button {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    background: #d1d1d1;
+    box-sizing: border-box;
+    // margin-left: 100px;
+    margin-top: 20px;
+    outline: none;
+    cursor: pointer;
+  }
+  .inputMony,
+  .inputYear,
+  .inputTime,
+  .inputAll {
+    color: black;
+  }
+  .interest {
+    color: green;
+  }
 }
 </style>
 
@@ -70,7 +73,7 @@
         <span class="interest">利率:</span>
         <input type="text" v-model="interest">
       </p>
-        <button @click="count" :disabled=allowUse>计算</button>
+      <button @click="count" :disabled="allowUse">计算</button>
     </div>
   </div>
 </template>
@@ -82,27 +85,27 @@ export default {
       year: "",
       time: "",
       all: "",
-      interest: "",
+      interest: ""
     };
   },
-  computed:{
-    inputMony(){
-      return !!this.mony
+  computed: {
+    inputMony() {
+      return !!this.mony;
     },
-    inputYear(){
-      return !!this.year
+    inputYear() {
+      return !!this.year;
     },
-    inputTime(){
-      return !!this.time
+    inputTime() {
+      return !!this.time;
     },
-    inputAll(){
-      return !!this.all
+    inputAll() {
+      return !!this.all;
     },
-    allowUse(){
-      if(this.mony&&this.year&&this.time&&this.all){
-        return false
-      }else{
-        return true
+    allowUse() {
+      if (this.mony && this.year && this.time && this.all) {
+        return false;
+      } else {
+        return true;
       }
     }
   },
@@ -110,17 +113,12 @@ export default {
     count() {
       let sum = 0;
       let tem = 0;
-      if(this.time>=this.year){
-        for (var i = 0; i <= this.year; i++) {
+      for (var i = 0; i <= this.year; i++) {
         sum += i;
       }
       tem = sum * this.mony + (this.time - this.year) * (this.mony * this.year);
       this.interest = (this.all - this.mony * this.year) / tem;
-      }else{
-        alert('存放时间不小于年限')
-      }
-      
-    },
+    }
   }
 };
 </script>
