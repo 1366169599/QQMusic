@@ -10,7 +10,7 @@ export default {
             this.$store.commit('setSongs',songs);
             this.$axios({
                 method: "get",
-                url: "/music/url?id=" + song.id
+                url: "/song/url?id=" + song.id
             }).then(res => {
                 let url = res.data.data[0].url;
                 this.$store.state.audioElement.src = url;
