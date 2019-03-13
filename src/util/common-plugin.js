@@ -1,5 +1,5 @@
 import axios from 'axios'
-axios.defaults.baseURL = 'http://101.236.45.250:4000';
+axios.defaults.baseURL = 'http://101.132.157.83:3000';
 axios.defaults.withCredentials = true;
 
 const CommonPlugin = {
