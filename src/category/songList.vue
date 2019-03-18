@@ -6,7 +6,7 @@
   }
 
   .quality-cont {
-    height: 30vh;
+    height: 240px;
     background: aqua;
     .nav-bar {
       height: 60px;
@@ -114,13 +114,14 @@
 </style>
 <template>
   <div class="songList">
+
     <div class="quality-cont">
       <div class="nav-bar">
         <div class="back-arrow" @click="goBack">
           <img src="../../assets/arrowsWhite.png" alt>
         </div>
         <div class="list-name">歌单</div>
-      </div>
+      </div> 
       <div class="quality">
         <div class="img">
           <img :src="coverImgUrl" alt>
@@ -135,6 +136,8 @@
         </div>
       </div>
     </div>
+
+
     <div class="cate">
       <router-link class="all-song" to="catlist">{{songList}}</router-link>
       <div class="cate-list">
