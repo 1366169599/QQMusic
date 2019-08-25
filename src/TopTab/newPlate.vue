@@ -203,16 +203,16 @@ export default {
       radioStation: "",
       items: [
         {
-          img: "./assets/carousel/1.jpeg"
+          img: "./assets/1.jpeg"
         },
         {
-          img: "./assets/carousel/2.jpg"
+          img: "./assets/2.jpg"
         },
         {
-          img: "./assets/carousel/3.jpeg"
+          img: "./assets/3.jpeg"
         },
         {
-          img: "./assets/carousel/4.jpeg"
+          img: "./assets/4.jpeg"
         }
       ],
       newsong:[]
