@@ -15,7 +15,8 @@ export default {
                 let url = res.data.data[0].url;
                 this.$store.state.audioElement.src = url;
                 let lastMusicUrl = this.$store.state.musicUrl;
-                    this.$store.state.audioElement.play();
+                this.$store.state.audioElement.play();
+
                 if (lastMusicUrl === url && this.$store.state.playState){
                     this.$store.commit('setShowPlayBar', false);
                     this.$router.push({

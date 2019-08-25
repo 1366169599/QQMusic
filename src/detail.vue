@@ -140,7 +140,7 @@
 
 <template>
   <div>
-    <div class="container">
+    <div id="detailBg" class="container">
       <div class="title-bar">
         <div class="img-cont" @click="returnLast">
           <img src="../assets/arrowsWhite.png" alt>
@@ -273,13 +273,9 @@ export default {
         RGBaster.colors(this.$store.state.song.al.picUrl, {
           exclude: ["rgb(255,255,255)", "rgb(0,0,0)"],
           success: function(payload) {
-            // console.log(payload.dominant);
-            // console.log(payload.secondary);
-            // console.log(payload.palette);
-            // console.log(payload);
-            document.getElementsByClassName(
-              "container"
-            )[0].style = `background:linear-gradient(45deg, ${
+            document.getElementById(
+              "detailBg"
+            ).style = `background:linear-gradient(45deg, ${
               payload.dominant
             }, ${payload.secondary})`;
           }
