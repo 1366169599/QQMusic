@@ -1,9 +1,8 @@
 <style lang='less' scope>
     .cate-cont {
-            background: #d1d1d1;
-            // display: flex;
+        background: #f1f1f1;
         li {
-            line-height: 30px;
+            line-height: 38px;
             display: inline-block;
             color: black;
             padding: 0 10px;

@@ -1,5 +1,8 @@
 <style lang="less" scoped>
 .ranking-list {
+  min-height: 100vh;
+  background: #f1f1f1;
+
   .arrows {
     width: 60px;
     height: 60px;
@@ -18,10 +21,8 @@
     height: 60px;
     line-height: 60px;
     text-align: center;
-    background: #d1d1d1;
   }
   .container {
-    background: #d1d1d1;
     .rank-demo {
       display: flex;
       margin: 0 20px 20px 20px;
@@ -88,7 +89,6 @@
             {{(index+1)+'.'+item.first+'-'+item.second}}
           </p>
         </div>
-          
       </router-link>
     </div>
   </div>
@@ -105,7 +105,7 @@ export default {
       method: "get",
       url: "/toplist/detail"
     }).then(res => {
-      this.rankingLists=res.data.list
+      this.rankingLists= (res.data.list || []).slice(0,4)
     });
   }
 };

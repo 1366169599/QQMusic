@@ -25,6 +25,7 @@
         text-align: center;
         border: 1px solid #d1d1d1;
         line-height: 30px;
+        margin-left: -1px;
       }
     }
   }
@@ -50,7 +51,7 @@
       p {
         line-height: 50px;
         padding-left: 30px;
-        border-bottom: 1px solid #d1d1d1;
+        border-bottom: 1px solid rgb(228, 228, 228);
         flex-grow: 1;
       }
     }

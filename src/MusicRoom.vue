@@ -40,13 +40,14 @@
 }
 .search {
   input {
-    display: block;
+   height: 30px;
+    line-height: 30px;
     width: 100%;
-    height: 50px;
-    text-align: center;
-    background: aquamarine;
+    color: rgba(0,0,0,.3);
     border: none;
-    outline: none;
+    -webkit-appearance: none;
+    font-size: 14px;
+    text-align: center;
   }
 }
 .menu {
@@ -119,7 +120,7 @@
     </div>
 
     <router-link class="search" to='search'>
-      <input type="text" placeholder="搜索">
+      <input type="text" placeholder="搜索歌曲、歌单、专辑">
     </router-link>
 
     <div class="mask" v-if="show" @click="hide"></div>

@@ -7,6 +7,8 @@
   display: flex;
   flex-wrap: wrap;
   .dj-item {
+    margin-left: -1px;
+    margin-top: -1px;
     width: 50%;
     height: 50px;
     display: flex;

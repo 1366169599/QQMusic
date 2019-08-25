@@ -22,7 +22,7 @@ export default {
                         path: 'detail'
                     })
                 }
-                this.$store.commit('setMusicUrl',url);
+                this.$store.commit('setMusicUrl',url); 
             });
         },
     }

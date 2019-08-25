@@ -1,6 +1,6 @@
 <style lang="less" scoped>
 .searchBar {
-  background: green;
+  background: cyan;
   display: flex;
   justify-content: space-between;
   height: 60px;
@@ -23,13 +23,13 @@
       display: inline-block;
       width: 100%;
       height: 100%;
-      background: green;
+      background: cyan;
       outline: none;
       border: none;
-      color: white;
-      font-size: 20px;
+      color: black;
+      font-size: 16px;
       &::-webkit-input-placeholder {
-          color: rgb(199, 196, 196);
+          color: rgba(200,200,200 ,0.8);
       }
     }
   }
@@ -42,7 +42,8 @@
       height: 20px;
       display: inline-block;
       line-height: 20px;
-      border: 1px solid black;
+      border: 1px solid #d1d1d1;
+      color: #999;
       border-radius: 10px;
       padding: 0 8px;
       margin: 5px;
@@ -76,7 +77,7 @@
         .name{
             line-height: 50px;
             flex-grow: 1;
-            font-size: 20px;
+            font-size: 16px;
             border-bottom: 1px solid #d1d1d1;
         }
     }

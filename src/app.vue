@@ -93,7 +93,7 @@
                         <img src="../assets/playGreen.png" alt="">
                     </span>
                     <span v-else @click="switchMusic">
-                        <img src="../assets/stopGreen.png" alt="">
+                       <img src="../assets/stopGreen.png" alt="">
                     </span>
                 </div>
                 <div class="menu-img">

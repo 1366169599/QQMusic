@@ -62,7 +62,7 @@
         }
         .signature {
           font-size: 12px;
-          color: gray;
+          color: #333;
         }
       }
     }
@@ -81,6 +81,7 @@
     display: flex;
     flex-wrap: wrap;
     .song-item {
+      font-size: 14px;
       padding: 4px;
       box-sizing: border-box;
       width: 50%;
